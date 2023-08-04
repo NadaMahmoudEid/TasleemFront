@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+.nav-item .nav-link{
+    color: #fff;
+}
+
+li a{
+    cursor: pointer;
+    padding: 12px;
+}
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link{
+    color: white;
+    background-color: #0e1d34;
+
+}
+.alogout:hover{
+    color: #404c68;
+
+    font-weight: 600;
+}
+.navbar-toggler{
+    left: 2%;
+    top: -37%;
+    position: relative;
+}

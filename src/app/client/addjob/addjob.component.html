@@ -1,0 +1,150 @@
+<div class="container-fluid " style="height: 100vh; overflow-x: hidden;" >
+  <div class="row justify-content-center align-items-center h-100">
+    <div class="card col-md-8 col-lg-6 mt-5 mb-5 shadow">
+      <div class="card-header text-center " style="font-weight: bold; color: rgba(5, 5, 114, 0.985); ">
+        أضافه اعلان
+      </div>
+      <div class="card-body">
+        <form [formGroup]="AddJobForm" (ngSubmit)='submit(AddJobForm)' class="flex-column flex-md-row" >
+
+          <div class="my-4 form-group col-12 d-md-flex">
+            <!-- Label column on medium and larger screens -->
+            <div class="col-md-6 d-flex justify-content-center justify-content-md-start">
+              <label for="title" style="font-size: medium; font-weight: bold; color: rgba(5, 5, 114, 0.985);" class="mb-1 px-5 py-1">عنوان الاعلان</label>
+            </div>
+            
+            <!-- Input column on medium and larger screens -->
+            <div class="col-md-6">
+              <input id="title" type="text" class="form-control w-100 px-5" formControlName="Title">
+              <div *ngIf="Title?.errors != null && Title?.touched">
+                <p *ngIf="Title?.errors?.['required']" class="text-danger  text-center">
+              ادخل  عنوان العرض
+                </p>
+                
+              </div>
+            </div>
+
+            
+          </div>
+                    
+          <div class="d-md-flex justify-content-center align-items-center mt-2">
+            <div class="col-md-4 text-center mb-3">
+              <!-- Label column on medium and larger screens -->
+              <div class="d-flex justify-content-md-end justify-content-center">
+                <!-- <div class="dropdown">
+                  <button  class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
+                    style="font-size: medium; font-weight: bold; color: rgba(5, 5, 114, 0.985); border: 1px solid rgba(5, 5, 114, 0.985);">
+                    المنطقه
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" dir="rtl"   formControlName="Location">
+                    <li *ngFor="let loc of LocationLists" value="{{loc.id}}" >{{loc.name}}</li>
+                  
+                  </ul>
+                </div> -->
+
+                
+                <select id="mainDropdown" formControlName="Location" style="direction: rtl; color: rgba(5, 5, 114, 0.985); border: 1px solid rgba(5, 5, 114, 0.985); " class="form-control text-center">
+
+                  <option value=""  style="font-size: small; font-weight: bold; color: rgba(5, 5, 114, 0.985); border: 1px solid rgba(5, 5, 114, 0.985);">
+
+                    حدد المنطقه
+                  </option>
+                  <option *ngFor="let loc of LocationLists" value="{{loc.id}}"  style="font-size: small; font-weight: bold; color: rgba(5, 5, 114, 0.985); border: 1px solid rgba(5, 5, 114, 0.985);">{{loc.name}}</option>
+               
+
+                </select>
+              </div>
+              <div *ngIf="Location?.errors != null && Location?.touched">
+                <p *ngIf="Location?.errors?.['required']" class="text-danger  text-center">
+                  ادخل  عنوان 
+                </p>
+                
+              </div>
+            </div>
+            <div class="col-md-8 col-12 d-flex justify-content-center mb-3"> <!-- Updated class added -->
+              <!-- Input column on medium and larger screens -->
+              <div class="d-flex align-items-center"> <!-- New div to wrap the <p> and <input> elements -->
+                <p style="font-size: medium; font-weight: bold; color: rgba(5, 5, 114, 0.985);" class="mx-2 mx-md-5 my-2 my-md-0">عدد النقاط المطلوبه</p>
+                <input type="number" class="form-control w-100 w-md-auto" style="max-width: 100px;" min="1" formControlName="requiredPoint">
+              </div>
+              
+            </div>
+           
+          </div>
+          <div *ngIf="requiredPoint?.errors != null && requiredPoint?.touched">
+            <p *ngIf="requiredPoint?.errors?.['required']" class="text-danger  text-center">
+              ادخل   عدد النقاط 
+            </p>
+            
+          </div>
+          
+          
+          <div class="my-4 form-group col-12 d-md-flex">
+            <!-- Label column on medium and larger screens -->
+            <div class="col-md-6 d-flex justify-content-center justify-content-md-start">
+              <label for="title" style="font-size: medium; font-weight: bold; color: rgba(5, 5, 114, 0.985);" class="mb-1 px-5 py-1"> العنوان بالتفصيل</label>
+            </div>
+            
+            <!-- Input column on medium and larger screens -->
+            <div class="col-md-6">
+              <textarea id="title" type="text" class="form-control w-100 px-5" formControlName="AddressDescription"></textarea>
+              <div *ngIf="AddressDescription?.errors != null && AddressDescription?.touched">
+                <p *ngIf="AddressDescription?.errors?.['required']" class="text-danger  text-center">
+                  ادخل  عنوان بتفصيل
+                </p>
+                
+              </div>
+            </div>
+            
+          </div>
+          
+          <div class="my-4 form-group col-12 d-md-flex">
+            <!-- Label column on medium and larger screens -->
+            <div class="col-md-6 d-flex justify-content-center justify-content-md-start">
+              <label for="title" style="font-size: medium; font-weight: bold; color: rgba(5, 5, 114, 0.985);" class="mb-1 px-5 py-1">  تفاصيل الاعلان</label>
+            </div>
+            
+            <!-- Input column on medium and larger screens -->
+            <div class="col-md-6">
+              <textarea id="title" type="text" class="form-control w-100 px-5" formControlName="JobDescription"></textarea>
+              <div *ngIf="JobDescription?.errors != null && JobDescription?.touched">
+                <p *ngIf="JobDescription?.errors?.['required']" class="text-danger  text-center">
+                    ادخل    تفاصيل الاعلان 
+                </p>
+                
+              </div>
+            </div>
+            
+          </div>
+          <div class="my-4 form-group col-12 d-md-flex">
+            <!-- Label column on medium and larger screens -->
+            <div class="col-md-6 d-flex justify-content-center justify-content-md-start">
+              <label for="title" style="font-size: medium; font-weight: bold; color: rgba(5, 5, 114, 0.985);" class="mb-1 px-5 py-1">   التكلفه</label>
+            </div>
+            
+            <!-- Input column on medium and larger screens -->
+            <div class="col-md-6">
+              <input  type="number" id="title" type="text" class="form-control w-100 px-5" formControlName="budget" min="1">
+              <div *ngIf="budget?.errors != null && budget?.touched">
+                <p *ngIf="budget?.errors?.['required']" class="text-danger text-center">
+                  ادخل    التكلفه
+                </p>
+                
+              </div>
+            </div>
+            
+          </div>
+          <div class="row text-center">
+            <div class="col">
+              <button  type="submit" class="btn w-75 my-3" style="background-color: rgba(5, 5, 114, 0.985); color: white;" [disabled]="AddJobForm.invalid">حفظ الاعلان</button>
+            </div>
+          </div>
+          
+
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</div>
