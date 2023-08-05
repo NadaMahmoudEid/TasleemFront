@@ -47,8 +47,13 @@ export class LoginComponent {
            this.loginUserRole=this.LoginService.getUserRole()
           console.log(this.loginUserRole)
 
-          if( this.loginUserRole=='Client' || this.loginUserRole=='Delivery' ){
-            this._route.navigate(['/home'])
+          if( this.loginUserRole=='Client'   ){
+            this._route.navigate(['/client/Projcts'])
+
+             }
+             else if(this.loginUserRole=='Delivery'){
+              this._route.navigate(['/delivery/filter'])
+
              }
                  else if(this.loginUserRole=='Admin'||this.loginUserRole=='SubAdmin' ){
                  this._route.navigate([''])

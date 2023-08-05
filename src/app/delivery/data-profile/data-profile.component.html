@@ -227,12 +227,12 @@
                     *ngFor="let item of skill; let i = index"
                   >
                     <label class="form-label">مهاره {{ i + 1 }}</label>
-                    <textarea
+                    <input
                       (ngModelChange)="onInputChange('Skills', $event)"
                       class="form-control"
                       [formControlName]="i"
                       rows="4"
-                    ></textarea>
+                    /> 
                   </div>
                 </ng-container>
                 <hr />
@@ -271,12 +271,12 @@
                     *ngFor="let item of languge; let i = index"
                   >
                     <label class="form-label">اللغه {{ i + 1 }}</label>
-                    <textarea
+                    <input
                       (ngModelChange)="onInputChange('Languges', $event)"
                       class="form-control"
                       [formControlName]="i"
                       rows="4"
-                    ></textarea>
+                    />
                   </div>
                 </ng-container>
 

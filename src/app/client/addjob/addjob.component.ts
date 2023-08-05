@@ -59,7 +59,7 @@ export class AddjobComponent implements OnInit {
       LocationId: this.Location?.value,
       AddressDetails: this.AddressDescription?.value,
       budget: this.budget?.value,
-      requiredPoint: this.requiredPoint?.value,
+      requiredPoints: this.requiredPoint?.value,
       ClientId :this._LoginS.getUserId()
     };
     console.log(jobDataToSend)

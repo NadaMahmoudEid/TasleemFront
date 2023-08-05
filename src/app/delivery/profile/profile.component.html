@@ -1,19 +1,26 @@
 <section>
-  <div class="container py-5 h-100">
+  <div *ngIf="!HaveaProData" style="height: 79.6vh">
+    <div class="m-4">
+      <div class="alert alert-primary alert-dismissible fade show">
+          <h4 class="alert-heading"><i class="bi-exclamation-octagon-fill"></i>&nbsp;لا يوجد ملف تعريفى لك يرجى ملىء ملفك </h4>
+          <p>يمكنك بناء ملفك التعريفى وأضافة بياناتك ومهاراتك بالتفاصيل لكى يستطيع رؤيتها صاحب العمل</p>
+          <hr>
+          <p class="mb-0 mx-auto text-center" >أضغط هنا لبناء ملفك الشخصى  <button routerLink="/delivery/ProfileData" class="btn rounded-1 text-light " style="background-color: #052c65;">بناء الملف</button></p>
+        
+      </div>
+  </div>
+  </div>
+  <div class="container py-5 h-100" *ngIf="HaveaProData">
     <div class="row d-flex justify-content-center align-items-center h-100" dir="rtl">
       <div class="col-xl-11 col-lg-11 col-md-10 col-sm-12 col-xs-12 ">
         <div class="card mb-5" style="border-radius: 15px">
           <div class="card-body p-4">
             <div class="row">
               <div class="col-sm-12" style="width: max-content">
-                <div style="
-                    display: inline-block;
+                <div class="d-inline-block rounded-circle m-2" style="
+                   
                     border: 0.125em solid #e2e5e3;
-                    border-radius: 25px;
-                    width: 1.875em;
-                    height: 1.875em;
-                    cursor: pointer;
-                    margin-bottom: 0.625em;
+                    
                   ">
                   <svg style="
                       width: 1em;
@@ -27,8 +34,8 @@
                   </svg>
                 </div>
 
-                  <img src='data:image/png;base64,{{DeliveryProfileDTO?.profileImg}}' loading="lazy" class="img-fluid rounded"
-                    alt="not found"  width="70em" height="100">
+                  <img src='data:image/png;base64,{{DeliveryProfileDTO?.profileImg}}' loading="lazy" class="img-fluid  rounded"
+                    alt="not found"  width="100em" height="110">
 
            </div>
               <div class="col-sm-6">
@@ -52,7 +59,7 @@
                   {{DeliveryProfileDTO?.address}}
                 </h4>
                 </div>
-                <button style="
+                <!-- <button style="
                     border: 1px solid #b7bbb8;
                     background-color: transparent;
                     border-radius: 1.5625em;
@@ -68,22 +75,10 @@
                     </path>
                   </svg>
                   Available now
-                </button>
+                </button> -->
               </div>
 
-              <div class="pt-2 col-xl-2 col-lg-4 col-md-6 col-sm-12 d-md-block">
-                <button  (click)="route()"                 style="
-                    width: 9.375em;
-                    height: 2.5em;
-                    background-color: #404c68;
-                    border: 0.125em solid transparent;
-                    color: white;
-                    border-radius: 1.5625em;
-                    font-weight: bold;
-                  ">
-                  إنشاء ملف تعريف
-                </button>
-              </div>
+           
             </div>
           </div>
           <hr style="width: 100%" />
@@ -91,14 +86,10 @@
 
           <h4 style="font-size: 1.1875em; font-weight: 500; margin-right: 4%;" >
             النبذة التعريفية
-            <div style="
-                display: inline-block;
+            <div class="d-inline-block rounded-circle" style="
+            
                 border: 0.125em solid #e2e5e3;
-                border-radius: 1.5625em;
-                width: 1.875em;
-                height: 1.875em;
-                margin-left: 0.9375em;
-                cursor: pointer;
+             
               ">
               <svg style="
               width: 1em;
@@ -112,7 +103,7 @@
           </svg>
             </div>
           </h4>
-          <p style="margin-right: 2%;">{{DeliveryProfileDTO?.overView}}</p>
+          <p class="m-auto">{{DeliveryProfileDTO?.overView}}</p>
 
           <hr style="width: 92%;margin-right:5% ;" />
 
@@ -123,7 +114,7 @@
                 <i class="fa fa-language" style="color: #404c68" aria-hidden="true"></i>
               </div>
 
-              <div>
+              <div class="justify-content-center col-11 m-auto">
                 <ul style="font-size: 1em;" class="list-container">
                   <li *ngFor="let lang of DeliveryProfileDTO?.languges" class="px-3 py-2">
                     {{ lang }}
@@ -142,7 +133,7 @@
                   list-style-type: none;
                   border: 0.125em solid #696e7a;
                   border-radius: 1.5625em;
-                  max-width: 80%;
+                  max-width: 70%;
                   text-align: center;
                   height: 2.5em;
                   padding: 0.625em;
@@ -150,6 +141,10 @@
                   background-color: #f6fbff;
                   " >{{DeliveryProfileDTO?.educationLevelDTO?.name}}
                   </li>
+                  <div  class=" d-inline-flex " style="gap:27rem">
+                    <span>من</span>       <span class="ms-4">إلى</span>
+
+                  </div>
                   <ul class="row " style="
                   display: flex;
                   justify-content:space-evenly;">
@@ -164,7 +159,7 @@
                     font-weight: bold;
                     background-color: #f6fbff;
                   " >{{ DeliveryProfileDTO?.educationLevelDTO?.dateTo | date:'yyyy-MM-dd' }}</li>
-                    <li class=" col  mt-3 " style="
+                     <li class=" col  mt-3 " style="
                     list-style-type: none;
                     border: 0.125em solid #696e7a;
                     border-radius: 25px;
@@ -174,7 +169,8 @@
                     padding: 0.625em;
                     font-weight: bold;
                     background-color: #f6fbff;
-                  " >{{ DeliveryProfileDTO?.educationLevelDTO?.dateFrom | date:'yyyy-MM-dd' }}</li>
+                  " >
+                  {{ DeliveryProfileDTO?.educationLevelDTO?.dateFrom | date:'yyyy-MM-dd' }} </li> 
                   </ul>
 
               </ul>
@@ -217,8 +213,7 @@
             </svg>
               </div>
               </h4>
-                <p style="font-size: 1em; margin: 0.3125em;font-weight: bold;">عدد السنوات :{{DeliveryProfileDTO?.yearExperinces}}</p>
-                <a class="sear" style="color: #404c68; font-weight: 600" routerLink="/delivery/filter"> ابدأ البحث عن المشاريع</a>
+                <p style="font-size: 1em; margin: 0.3125em;font-weight: bold;">عدد السنوات: {{DeliveryProfileDTO?.yearExperinces}}</p>
               </div>
 
               <hr class="mt-0 mb-4" style="width: 100%" />
@@ -253,7 +248,11 @@
                   </li>
                 </ul>
               </div>
-
+              <div class="text-center">
+                
+                <a class="sear " style="color: #404c68; font-weight: 600" routerLink="/delivery/filter"> ابدأ البحث عن المشاريع</a>
+              </div>
+          
             </div>
           </div>
         </div>

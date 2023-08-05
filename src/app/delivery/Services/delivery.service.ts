@@ -27,4 +27,5 @@ export class DeliveryService {
      return this._httpClient.put(`${this.url}/api/Deivery/AddDeliveryProfile`,
      DeliveryProfileDTO);
   }
+
 }

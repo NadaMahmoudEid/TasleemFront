@@ -10,7 +10,7 @@ const routes: Routes = [
 {path:'addjob',component:AddjobComponent},
 {path:'jobPorposal',component:JobPorposalsComponent},
 {path:'Projcts',component:MyProjectComponent},
-{path:'porpDetails',component:PorposalDetailsComponent},
+{path:'porpDetails/:id',component:PorposalDetailsComponent},
 ]
 
 @NgModule({

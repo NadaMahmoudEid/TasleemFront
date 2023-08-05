@@ -1,56 +1,19 @@
-<div class="container p-5" style="height: 100vh;">   
-    <form>  
-  <div class="card" style="width: 77rem;">
-      
-    <div class="card-body job" >
-        <div class="row">
-        <h5 class="card-title col-10 mt-2"></h5>
-        <button type="button" class="btn btn-outline-dark btn-floating col-2 "
-         data-mdb-ripple-color="dark" style="border: none; width: 40px; height: 40x; border-radius: 60%; align-items: center;">
-          <i class="fa-regular fa-heart"></i></button>
-      </div>
-      <div class="row">
-        <div>
-          <small class="text-muted display-inline-block text-muted">
-            <span>
-        </span> <span>
-          <br>
-          <span>التكاليف: </span> <span data-test="budget">
-         
-          </span>
-        </span>  
-        <br>
-          <span>
-        </span></small> </div>
-      </div>
-        <p class="card-text">desc</p>
-      
-        <div class="row">
-        </div>
+<div class="container mb-5" style="height: auto; overflow-y: auto;">
+  <h2 class="text-center  p-2"> مشاريعي</h2>
+    
+    <div class="row  justify-content-center pb-5" id="products"  *ngFor="let i of JobLists " >
+      <div class="card m-2 w-75 ">
+        <h5 class="card-header"> {{i.title}}</h5>
+        <div class="card-body">
+         <p class="card-text">{{i.details}}</p>
+          <a routerLink="/client/porpDetails/{{i.id}}" class="btn btn-primary">تفاصيل</a> 
+          <small class="text-start " > <span  style=" font-weight: bold; color: #252525;" >النقاط:</span> {{i.requiredPoints}}</small>
+          
+                </div>
+      </div> 
   
-  
-        <div class="row">
-          <div >
-            <span><i class="fa-regular fa-badge-check" style="background-color:#404c68;"></i></span>
-             &nbsp;
-            <strong><small class="text-muted">وسيله الدفع موثوقه</small></strong>
-            &nbsp;
-            <span><i class="fa-solid fa-star" style="color: #404c68;"></i></span>
-            <span><i class="fa-solid fa-star" style="color: #404c68;"></i></span>
-            <span><i class="fa-solid fa-star" style="color: #404c68;"></i></span>
-            <span><i class="fa-solid fa-star" style="color: #404c68;"></i></span>
-            <span><i class="fa-solid fa-star" style="color: #404c68;"></i></span>
-            &nbsp;
-            <small data-test="client-spendings" class="d-inline-block"><strong><span data-test="EarnedAmountFormatted">
-              $0
-            </span></strong> <span class="text-muted">تم دفعها</span></small>
-            &nbsp;
-            <small data-test="connects-to-apply" class="d-none d-lg-inline-flex d-md-inline-flex text-muted">
-              عدد النقاط المطلوبه:&nbsp;
-              <strong data-test="connect-price">4 نقاط</strong></small>
-          </div>
-          </div>
+    
+     
+      
     </div>
-   </div>
-  </form>
 </div>

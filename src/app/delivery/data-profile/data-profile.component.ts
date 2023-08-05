@@ -5,6 +5,7 @@ import { DeliveryProfileDTO } from '../Interfaces/DeliveryProfileDTO';
 import { LoginService } from 'src/app/auth/Services/login.service';
 import { DeliveryService } from '../Services/delivery.service';
 import { Router } from '@angular/router';
+import { SharedService } from 'src/app/shared/service/shared.service';
 
 @Component({
   selector: 'app-data-profile',
@@ -41,7 +42,7 @@ DeliveryProfileDTO:DeliveryProfileDTO={
 
 
 
-  constructor(private formBuilder: FormBuilder , private _loginService : LoginService ,
+  constructor(private formBuilder: FormBuilder ,private Shardservice:SharedService, private _loginService : LoginService ,
      private _deliveryService : DeliveryService , private _router :Router) {
   }
   ngOnInit(): void {
@@ -125,6 +126,8 @@ DeliveryProfileDTO:DeliveryProfileDTO={
   }
 
   submitData(DataProfileForm: any) {
+    this.Shardservice.dataSubject.next(true)
+
     if (this.DataProfileForm.valid) {
 
       const skillFormArray = this.DataProfileForm.get('skill') as FormArray;
