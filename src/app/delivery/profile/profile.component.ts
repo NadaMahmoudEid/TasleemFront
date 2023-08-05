@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { GetDeliveryProfileData } from '../Interfaces/GetDeliveryProfileData.ts';
-import { DeliveryService } from '../Services/delivery.service.js';
-import { LoginService } from 'src/app/auth/Services/login.service.js';
+import { DeliveryService } from '../Services/delivery.service';
+import { LoginService } from '../../../app/auth/Services/login.service';
 
 @Component({
   selector: 'app-profile',
