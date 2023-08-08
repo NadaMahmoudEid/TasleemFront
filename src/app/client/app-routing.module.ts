@@ -5,11 +5,15 @@ import { AddjobComponent } from './addjob/addjob.component';
 import { JobPorposalsComponent } from './job-porposals/job-porposals.component';
 import { MyProjectComponent } from './my-project/my-project.component';
 import { PorposalDetailsComponent } from './porposal-details/porposal-details.component';
+import { ProfileComponent } from './profile/profile.component';
+import { DataProfileComponent } from './data-profile/data-profile.component';
 
 const routes: Routes = [
 {path:'addjob',component:AddjobComponent},
 {path:'jobPorposal',component:JobPorposalsComponent},
 {path:'Projcts',component:MyProjectComponent},
+{path:'profile',component:ProfileComponent},
+{path:'dataProfile',component:DataProfileComponent},
 {path:'porpDetails/:id',component:PorposalDetailsComponent},
 ]
 

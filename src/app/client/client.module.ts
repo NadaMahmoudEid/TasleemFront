@@ -6,6 +6,8 @@ import { JobPorposalsComponent } from './job-porposals/job-porposals.component';
 import { PorposalDetailsComponent } from './porposal-details/porposal-details.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
+import { DataProfileComponent } from './data-profile/data-profile.component';
 
 
 
@@ -14,7 +16,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     AddjobComponent,
     MyProjectComponent,
     JobPorposalsComponent,
-    PorposalDetailsComponent
+    PorposalDetailsComponent,
+    ProfileComponent,
+    DataProfileComponent
   ],
   imports: [
     CommonModule,

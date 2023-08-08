@@ -1,0 +1,39 @@
+body{
+    margin-top:20px;
+    background:#eee;
+}
+
+.sear{
+    text-decoration: none;
+}
+.sear:hover{
+    text-decoration:underline;
+}
+
+.btn{
+    width: 7.5em;
+    height: 2.5em;
+    background-color: #f6fbff;
+    border-radius: 1.5625em;
+    margin-left: 0.1875em;
+    font-size: 0.8125em;
+}
+ul.list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Adjust this as per your alignment preference */
+}
+
+/* Style for individual <li> elements */
+li {
+  list-style-type: none;
+  border-radius: 1.5625em;
+  text-align: center;
+  height: 2.1875em;
+  padding: 0.3125em;
+  border: 0.125em solid #696e7a;
+  background-color: #f6fbff;
+  flex-basis: calc(25% - 1.25em); /* Set each <li> to occupy 25% width minus spacing */
+  margin: 0.625em;
+}
+

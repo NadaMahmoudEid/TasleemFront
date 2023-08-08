@@ -33,7 +33,9 @@
                       <i class="fa-solid fa-bell"></i>
                     </a>
                   </li>
-                  
+                  <li class="nav-item">
+                    <a class="nav-link" *ngIf="isLoggedIn  && isDelivery"  routerLink="/delivery/profile" routerLinkActive="active">الحساب</a>
+                  </li>
                   <!-- **********************************************client ********************************************* -->
 
                   <li class="nav-item">
@@ -47,8 +49,9 @@
                    <li class="nav-item">
                     <a class="nav-link" *ngIf="isLoggedIn && isClient" routerLink="/client/addjob" routerLinkActive="active">اضافه وظيفه</a>
                   </li>
+                 
                   <li class="nav-item">
-                    <a class="nav-link" *ngIf="isLoggedIn"  routerLink="/delivery/profile" routerLinkActive="active">الحساب</a>
+                    <a class="nav-link" *ngIf="isLoggedIn  && isClient"  routerLink="/client/profile" routerLinkActive="active">الحساب</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" *ngIf="isLoggedIn && isClient " routerLink="/client/Projcts" routerLinkActive="active">مشاريعى</a>
@@ -60,7 +63,7 @@
                   <ul class="navbar-nav mb-6 mx-auto">
                     
                     <li class="nav-item">
-                      <a class="nav-link"  *ngIf="isLoggedIn" routerLink="/auth/RegisterOR" routerLinkActive="active" style="  top: 8%;  left: 5%;
+                      <a class="nav-link"  *ngIf="!isLoggedIn" routerLink="/auth/RegisterOR" routerLinkActive="active" style="  top: 8%;  left: 5%;
                       position: absolute;">إنشاء حساب</a>
                     </li>
                     <li class="nav-item">
