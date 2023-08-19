@@ -9,14 +9,15 @@ export class JobService {
 
   url: string = "https://localhost:7132"
   constructor(private _httpClient :HttpClient) {
-    
-   }
 
+   }
+  
 
    GetJobByID(jobId:any): Observable<any> {
     return this._httpClient.get(`${this.url}/api/Jobs/GetJobById/${jobId}`);
   }
-  
+
+
    AddJob(JobData:any): Observable<any> {
     return this._httpClient.post(`${this.url}/api/Jobs/AddJob`,JobData);
   }

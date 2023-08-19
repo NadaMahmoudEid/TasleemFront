@@ -16,11 +16,42 @@ export class AddjobComponent implements OnInit {
   constructor(private _locationService: LocationService, private _JobService: JobService
     , private formBuilder: FormBuilder, public _route: Router, private _LoginS:LoginService) { }
 
+    selectedCountry: string = '';
+    cities: string[] = [];
+
+    citiesByCountry: { [key: string]: string[] } = {
+      oman: [
+        'مسقط',
+        'مسندم',
+        ' البريمي',
+        'شمال الباطنة',
+        'جنوب الباطنة',
+        'شمال الشرقية',
+        'جنوب الشرقية',
+        'الداخلية',
+        'الظاهرة',
+        'ظفار',
+        'الوسطى',
+      ],
+      uae: [
+        'أبوظبى',
+        'دبى',
+        'الشارقة',
+        'عجمان',
+        'رأس الخيمة',
+        'الفجيرة',
+        'أم القيوين',
+      ],
+
+    };
+
+
   AddJobForm = this.formBuilder.group({
     Title: ['', [Validators.required]],
 
     JobDescription: ['', [Validators.required]],
-    Location: ['', [Validators.required]],
+    CountryName: ['', [Validators.required]],
+    CityName: ['', [Validators.required]],
     AddressDescription: ['', [Validators.required]],
     budget: ['', [Validators.required]],
     requiredPoint: ['', [Validators.required]],
@@ -29,8 +60,13 @@ export class AddjobComponent implements OnInit {
   get Title() {
     return this.AddJobForm.get('Title');
   }
-  get Location() {
-    return this.AddJobForm.get('Location');
+  get CountryName() {
+    return this.AddJobForm.get('CountryName');
+  }
+  get CityName()
+  {
+    return this.AddJobForm.get('CityName');
+
   }
   get requiredPoint() {
     return this.AddJobForm.get('requiredPoint');
@@ -45,24 +81,29 @@ export class AddjobComponent implements OnInit {
     return this.AddJobForm.get('budget');
   }
   ngOnInit(): void {
-    this._locationService.AllLocation().subscribe((resp) => {
-      this.LocationLists = resp
-      console.log("loc",this.LocationLists)
-    })
+
+
   }
 
   submit(JobData: FormGroup) {
     console.log(JobData.value)
+
+
+
     const jobDataToSend = {
       Title: this.Title?.value,
       Details: this.JobDescription?.value,
-      LocationId: this.Location?.value,
+      CountryName: this.CountryName?.value,
+      CityName:this.CityName?.value,
       AddressDetails: this.AddressDescription?.value,
       budget: this.budget?.value,
       requiredPoints: this.requiredPoint?.value,
       ClientId :this._LoginS.getUserId()
     };
     console.log(jobDataToSend)
+
+
+
 
     this._JobService.AddJob(jobDataToSend).subscribe((resp) => {
       console.log(resp)
@@ -74,5 +115,12 @@ export class AddjobComponent implements OnInit {
 
     })
 
+  }
+
+  onCountryChange(event: Event) {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    this.selectedCountry=selectedValue;
+    this.cities = this.citiesByCountry[this.selectedCountry] || [];
+    console.log("Cities:", this.cities);
   }
 }

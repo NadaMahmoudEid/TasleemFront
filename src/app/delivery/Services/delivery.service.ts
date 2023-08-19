@@ -9,7 +9,7 @@ import { Jobs } from '../Interfaces/Job';
 export class DeliveryService {
   url: string = "https://localhost:7132"
   constructor(private _httpClient :HttpClient) {
-    
+
    }
 
 
@@ -26,6 +26,18 @@ export class DeliveryService {
   {
      return this._httpClient.put(`${this.url}/api/Deivery/AddDeliveryProfile`,
      DeliveryProfileDTO);
+  }
+  FilterJobByCountry(country: string): Observable<any>
+  {
+    return this._httpClient.get(`${this.url}/api/Jobs/GetJobsByCountryName/${country}`);
+  }
+  FilterJobByCountryCity(country: string,city:string): Observable<any>
+  {
+      return this._httpClient.get(`${this.url}/api/Jobs/GetJobsByCountryName/${country}/${city}`);
+  }
+  FilterJobByRequiredPoints(requiredPoints:number): Observable<any>
+  {
+      return this._httpClient.get(`${this.url}/api/Jobs/GetJobsByRequiredPonits/${requiredPoints}`);
   }
 
 }

@@ -1,61 +1,95 @@
 <div class="container mb-5">
-<h2 class="text-center  p-2">تصفح المشاريع</h2>
+	<h2 class="text-center  p-2">تصفح المشاريع</h2>
 	<div class="row mt-3" id="filter ">
 		<form class="d-flex  justify-content-center">
-			<label for=""  class="mt-1"> السعر : </label>
+			<label for="" class="mt-1"> النقاط : </label>
+			<!-- <div class="form-group col-sm-3 col-xs-6">
+        <input type="number" class="form-control" [(ngModel)]="selectedRequiredPoints" (ngModelChange)="onRequiredPointsChanged($event)" [ngModelOptions]="{ standalone: true }" placeholder="كل النقاط" />
+			</div> -->
+
+			<label class="mt-1 ms-2">الدول: </label>
+      <div class="form-group d-flex col-sm-2 col-xs-6">
+			<select (change)="onCountryChange($event)" class="filter-price col-sm-3 filter form-control">
+				<option value="كل الدول" selected>كل الدول</option>
+				<option value="عمان">  عمان</option>
+				<option value="الأمارات">الأمارات</option>
+			</select>
+      <img *ngIf="selectedCountry=='عمان'" class="col-3 p-2" src="assets/oman.png" />
+      <img *ngIf="selectedCountry=='الأمارات'" class="col-3 p-2" src="assets/emirates.png" />
+      </div>
+			<label class="mt-1" style="margin-right: 6%;">المدن:</label>
 			<div class="form-group col-sm-3 col-xs-6">
-				<select data-filter="make" class="filter-make filter form-control">
-					<option value="" selected >جميع الاسعار</option>
-					<option value="">100 < </option>
-				</select>
-			</div>
-	
-		<label class="mt-1"> المنطقة : </label>
-			<div class="form-group col-sm-3 col-xs-6">
-				<select data-filter="price" class="filter-price filter form-control">
-					<option value="" selected >كل المناطق</option>
-					<option value="">السعودية </option>
+				<select (change)="onCityChange($event)" class="filter-price col-sm-3 filter form-control">
+					<option value="كل المدن" selected>كل المدن</option>
+					<option *ngFor="let city of cities" [value]="city">{{city}}</option>
 				</select>
 			</div>
 		</form>
 	</div>
-	<div class="row  justify-content-center pb-5" id="products"  *ngFor="let i of JobLists " >
-		<div class="card m-2 w-75 ">
-      <h5 class="card-header"> {{i.title}}</h5>
-      <div class="card-body">
-       <p class="card-text">{{i.details}}</p>
-        <a routerLink="/delivery/jobDetails/{{i.id}}" class="btn btn-primary">تفاصيل</a> <small class="text-start " >النقاط: {{i.requiredPoints}}</small>
-      </div>
-    </div> 
 
-	
-   
-    
-	</div>
-	<div class="row  justify-content-center pb-5" id="products " >
+  <div *ngIf="IsJobList">
+	<div class="row  justify-content-center pb-5" id="products" *ngFor="let i of JobLists ">
 		<div class="card m-2 w-75 ">
-      <h5 class="card-header">توصيل ملابس </h5>
-      <div class="card-body">
-       <p class="card-text"> job details Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, adipisci?</p>
-        <a routerLink="/delivery/jobDetails/:1" class="btn btn-primary">تفاصيل</a> <small class="text-start " >النقاط:45</small>
-      </div>
-    </div>
+			<h5 class="card-header"> {{i.title}}</h5>
+			<div class="card-body">
+				<p class="card-text">{{i.details}}</p>
+        <small class="card-text fs-5  text-primary">الدولة: {{i.countryName}}</small>
+        <small class="card-text fs-5  text-primary">المدينة: {{i.cityName}}</small>
+				<a routerLink="/delivery/jobDetails/{{i.id}}" class="btn btn-primary">تفاصيل</a>
+        <small class="text-start fs-5  text-primary ">النقاط: {{i.requiredPoints}}</small>
+        <small class="text-end fs-5  text-primary ">التكلفة: {{i.budget}}</small>
+			</div>
+		</div>
 	</div>
-	<div class="row  justify-content-center pb-5" id="products " >
-		<div class="card m-2 w-75 ">
-      <h5 class="card-header">توصيل طعام </h5>
-      <div class="card-body">
-       <p class="card-text"> job details Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, adipisci?</p>
-        <a routerLink="/delivery/jobDetails/:2" class="btn btn-primary">تفاصيل</a> <small class="text-start " >النقاط:45</small>
+  </div>
+
+
+    <div *ngIf="IsJobByCountry">
+      <div class="row  justify-content-center pb-5" id="products" *ngFor="let i of JobByCountry ">
+        <div class="card m-2 w-75 ">
+          <h5 class="card-header"> {{i.title}}</h5>
+          <div class="card-body">
+            <p class="card-text">{{i.details}}</p>
+            <small class="card-text fs-5  text-primary">الدولة: {{i.countryName}}</small>
+            <small class="card-text fs-5  text-primary">المدينة: {{i.cityName}}</small>
+            <a routerLink="/delivery/jobDetails/{{i.id}}" class="btn btn-primary">تفاصيل</a> <small
+              class="text-start fs-5  text-primary">النقاط: {{i.requiredPoints}}</small>
+              <small class="text-end fs-5  text-primary ">التكلفة: {{i.budget}}</small>
+          </div>
+        </div>
       </div>
-    </div>
-	</div>
-	<div class="row  justify-content-center pb-5" id="products " >
-		<div class="card m-2 w-75 ">
-      <h5 class="card-header">title </h5>
-      <div class="card-body">
-       <p class="card-text"> job details Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, adipisci?</p>
-        <a routerLink="/delivery/jobDetails/" class="btn btn-primary">تفاصيل</a> <small class="text-start " >النقاط:45</small>
       </div>
-    </div>
-</div>
+
+      <div *ngIf="IsJobByCountryCity">
+        <div class="row  justify-content-center pb-5" id="products" *ngFor="let i of JobByCountryCity ">
+          <div class="card m-2 w-75 ">
+            <h5 class="card-header"> {{i.title}}</h5>
+            <div class="card-body">
+              <p class="card-text">{{i.details}}</p>
+              <small class="card-text fs-5 text-primary">الدولة: {{i.countryName}}</small>
+              <small class="card-text fs-5  text-primary">المدينة: {{i.cityName}}</small>
+              <a routerLink="/delivery/jobDetails/{{i.id}}" class="btn btn-primary">تفاصيل</a> <small
+                class="text-start fs-5  text-primary">النقاط: {{i.requiredPoints}}</small>
+                <small class="text-end fs-5  text-primary ">التكلفة: {{i.budget}}</small>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div *ngIf="IsJobByRequiredPoints">
+          <div class="row  justify-content-center pb-5" id="products" *ngFor="let i of JobByCountryCity ">
+            <div class="card m-2 w-75 ">
+              <h5 class="card-header"> {{i.title}}</h5>
+              <div class="card-body">
+                <p class="card-text">{{i.details}}</p>
+                <small class="card-text fs-5 text-primary">الدولة: {{i.countryName}}</small>
+                <small class="card-text fs-5  text-primary">المدينة: {{i.cityName}}</small>
+                <a routerLink="/delivery/jobDetails/{{i.id}}" class="btn btn-primary">تفاصيل</a> <small
+                  class="text-start fs-5  text-primary">النقاط: {{i.requiredPoints}}</small>
+                  <small class="text-end fs-5  text-primary ">التكلفة: {{i.budget}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+

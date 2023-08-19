@@ -17,7 +17,7 @@ import { ContactusComponent } from '../about/contactus/contactus.component';
 import { OurPriceComponent } from '../about/our-price/our-price.component';
 
 const routes: Routes = [
-  {path:'savedjobs',component:SavedJobComponent},
+{path:'savedjobs',component:SavedJobComponent},
 {path:'home',component:HomeComponent},
 {path:'service',component:OurservComponent},
 {path:'about',component:AboutusComponent},
@@ -30,6 +30,7 @@ const routes: Routes = [
 {path:'choose',component:RegistORComponent},
 {path:'Contact',component:ContactusComponent},
 {path:'Price',component:OurPriceComponent},
+
 
 
 ]

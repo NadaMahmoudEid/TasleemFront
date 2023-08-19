@@ -12,7 +12,7 @@
             <div class="col-md-6 d-flex justify-content-center justify-content-md-start">
               <label for="title" style="font-size: medium; font-weight: bold; color: rgba(5, 5, 114, 0.985);" class="mb-1 px-5 py-1">عنوان الاعلان</label>
             </div>
-            
+
             <!-- Input column on medium and larger screens -->
             <div class="col-md-6">
               <input id="title" type="text" class="form-control w-100 px-5" formControlName="Title">
@@ -20,71 +20,66 @@
                 <p *ngIf="Title?.errors?.['required']" class="text-danger  text-center">
               ادخل  عنوان العرض
                 </p>
-                
+
               </div>
             </div>
 
-            
+
           </div>
-                    
-          <div class="d-md-flex justify-content-center align-items-center mt-2">
-            <div class="col-md-4 text-center mb-3">
-              <!-- Label column on medium and larger screens -->
-              <div class="d-flex justify-content-md-end justify-content-center">
-                <!-- <div class="dropdown">
-                  <button  class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
-                    style="font-size: medium; font-weight: bold; color: rgba(5, 5, 114, 0.985); border: 1px solid rgba(5, 5, 114, 0.985);">
-                    المنطقه
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" dir="rtl"   formControlName="Location">
-                    <li *ngFor="let loc of LocationLists" value="{{loc.id}}" >{{loc.name}}</li>
-                  
-                  </ul>
-                </div> -->
 
-                
-                <select id="mainDropdown" formControlName="Location" style="direction: rtl; color: rgba(5, 5, 114, 0.985); border: 1px solid rgba(5, 5, 114, 0.985); " class="form-control text-center">
+          <div class=" d-md-flex justify-content-center align-items-center mt-2">
 
-                  <option value=""  style="font-size: small; font-weight: bold; color: rgba(5, 5, 114, 0.985); border: 1px solid rgba(5, 5, 114, 0.985);">
 
-                    حدد المنطقه
-                  </option>
-                  <option *ngFor="let loc of LocationLists" value="{{loc.id}}"  style="font-size: small; font-weight: bold; color: rgba(5, 5, 114, 0.985); border: 1px solid rgba(5, 5, 114, 0.985);">{{loc.name}}</option>
-               
+            <label class="mt-1 ms-2  mb-4 " style="font-weight: bold;">الدولة: </label>
+			<select formControlName="CountryName" (change)="onCountryChange($event)" class="filter-price w-25 mb-4 col-sm-3 ms-2 filter form-control">
+				<option value="oman">عمان</option>
+				<option value="uae">الأمارات</option>
+			</select>
+      <div *ngIf="CountryName?.errors != null && CountryName?.touched">
+        <p *ngIf="CountryName?.errors?.['required']" class="text-danger  text-center">
+          ادخل  الدولة
+        </p>
 
-                </select>
-              </div>
-              <div *ngIf="Location?.errors != null && Location?.touched">
-                <p *ngIf="Location?.errors?.['required']" class="text-danger  text-center">
-                  ادخل  عنوان 
-                </p>
-                
-              </div>
+      </div>
+
+
+			<label class="mt-1  mb-4 " style="font-weight: bold;">المدينة:</label>
+			<div class="form-group col-sm-3 col-xs-6">
+				<select formControlName="CityName" class="filter-price  mb-4  filter form-control">
+					<option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+				</select>
+			</div>
+      <div *ngIf="CityName?.errors != null && CityName?.touched">
+        <p *ngIf="CityName?.errors?.['required']" class="text-danger  text-center">
+          ادخل المدينة
+        </p>
+
+      </div>
+
+          </div>
+
+          <div class="col-md-8 col-12 d-flex justify-content-center mb-3"> <!-- Updated class added -->
+            <!-- Input column on medium and larger screens -->
+            <div class="d-flex align-items-center"> <!-- New div to wrap the <p> and <input> elements -->
+              <p style="font-size: medium; font-weight: bold; color: rgba(5, 5, 114, 0.985);" class="mx-2 mx-md-5 my-2 my-md-0">عدد النقاط المطلوبه</p>
+              <input type="number" class="form-control w-100 w-md-auto" style="max-width: 100px;" min="1" formControlName="requiredPoint">
             </div>
-            <div class="col-md-8 col-12 d-flex justify-content-center mb-3"> <!-- Updated class added -->
-              <!-- Input column on medium and larger screens -->
-              <div class="d-flex align-items-center"> <!-- New div to wrap the <p> and <input> elements -->
-                <p style="font-size: medium; font-weight: bold; color: rgba(5, 5, 114, 0.985);" class="mx-2 mx-md-5 my-2 my-md-0">عدد النقاط المطلوبه</p>
-                <input type="number" class="form-control w-100 w-md-auto" style="max-width: 100px;" min="1" formControlName="requiredPoint">
-              </div>
-              
-            </div>
-           
+
           </div>
           <div *ngIf="requiredPoint?.errors != null && requiredPoint?.touched">
             <p *ngIf="requiredPoint?.errors?.['required']" class="text-danger  text-center">
-              ادخل   عدد النقاط 
+              ادخل   عدد النقاط
             </p>
-            
+
           </div>
-          
-          
+
+
           <div class="my-4 form-group col-12 d-md-flex">
             <!-- Label column on medium and larger screens -->
             <div class="col-md-6 d-flex justify-content-center justify-content-md-start">
               <label for="title" style="font-size: medium; font-weight: bold; color: rgba(5, 5, 114, 0.985);" class="mb-1 px-5 py-1"> العنوان بالتفصيل</label>
             </div>
-            
+
             <!-- Input column on medium and larger screens -->
             <div class="col-md-6">
               <textarea id="title" type="text" class="form-control w-100 px-5" formControlName="AddressDescription"></textarea>
@@ -92,36 +87,36 @@
                 <p *ngIf="AddressDescription?.errors?.['required']" class="text-danger  text-center">
                   ادخل  عنوان بتفصيل
                 </p>
-                
+
               </div>
             </div>
-            
+
           </div>
-          
+
           <div class="my-4 form-group col-12 d-md-flex">
             <!-- Label column on medium and larger screens -->
             <div class="col-md-6 d-flex justify-content-center justify-content-md-start">
               <label for="title" style="font-size: medium; font-weight: bold; color: rgba(5, 5, 114, 0.985);" class="mb-1 px-5 py-1">  تفاصيل الاعلان</label>
             </div>
-            
+
             <!-- Input column on medium and larger screens -->
             <div class="col-md-6">
               <textarea id="title" type="text" class="form-control w-100 px-5" formControlName="JobDescription"></textarea>
               <div *ngIf="JobDescription?.errors != null && JobDescription?.touched">
                 <p *ngIf="JobDescription?.errors?.['required']" class="text-danger  text-center">
-                    ادخل    تفاصيل الاعلان 
+                    ادخل    تفاصيل الاعلان
                 </p>
-                
+
               </div>
             </div>
-            
+
           </div>
           <div class="my-4 form-group col-12 d-md-flex">
             <!-- Label column on medium and larger screens -->
             <div class="col-md-6 d-flex justify-content-center justify-content-md-start">
               <label for="title" style="font-size: medium; font-weight: bold; color: rgba(5, 5, 114, 0.985);" class="mb-1 px-5 py-1">   التكلفه</label>
             </div>
-            
+
             <!-- Input column on medium and larger screens -->
             <div class="col-md-6">
               <input  type="number" id="title" type="text" class="form-control w-100 px-5" formControlName="budget" min="1">
@@ -129,17 +124,17 @@
                 <p *ngIf="budget?.errors?.['required']" class="text-danger text-center">
                   ادخل    التكلفه
                 </p>
-                
+
               </div>
             </div>
-            
+
           </div>
           <div class="row text-center">
             <div class="col">
               <button  type="submit" class="btn w-75 my-3" style="background-color: rgba(5, 5, 114, 0.985); color: white;" [disabled]="AddJobForm.invalid">حفظ الاعلان</button>
             </div>
           </div>
-          
+
 
         </form>
 
