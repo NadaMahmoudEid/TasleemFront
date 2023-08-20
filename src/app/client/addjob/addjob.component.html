@@ -30,10 +30,10 @@
           <div class=" d-md-flex justify-content-center align-items-center mt-2">
 
 
-            <label class="mt-1 ms-2  mb-4 " style="font-weight: bold;">الدولة: </label>
+            <label class="mt-1 ms-2  mb-4 " style="font-size: medium; font-weight: bold; color: rgba(5, 5, 114, 0.985);">الدولة: </label>
 			<select formControlName="CountryName" (change)="onCountryChange($event)" class="filter-price w-25 mb-4 col-sm-3 ms-2 filter form-control">
-				<option value="oman">عمان</option>
-				<option value="uae">الأمارات</option>
+				<option value="عمان">عمان</option>
+				<option value="الأمارات">الأمارات</option>
 			</select>
       <div *ngIf="CountryName?.errors != null && CountryName?.touched">
         <p *ngIf="CountryName?.errors?.['required']" class="text-danger  text-center">
@@ -43,7 +43,7 @@
       </div>
 
 
-			<label class="mt-1  mb-4 " style="font-weight: bold;">المدينة:</label>
+			<label class="mt-1  mb-4 " style="font-size: medium; font-weight: bold; color: rgba(5, 5, 114, 0.985);">المدينة:</label>
 			<div class="form-group col-sm-3 col-xs-6">
 				<select formControlName="CityName" class="filter-price  mb-4  filter form-control">
 					<option *ngFor="let city of cities" [value]="city">{{ city }}</option>

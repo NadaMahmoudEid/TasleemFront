@@ -6,7 +6,7 @@
           <p>يمكنك بناء ملفك التعريفى وأضافة بياناتك ومهاراتك بالتفاصيل لكى يستطيع رؤيتها صاحب العمل</p>
           <hr>
           <p class="mb-0 mx-auto text-center" >أضغط هنا لبناء ملفك الشخصى  <button routerLink="/delivery/ProfileData" class="btn rounded-1 text-light " style="background-color: #052c65;">بناء الملف</button></p>
-        
+
       </div>
   </div>
   </div>
@@ -18,9 +18,9 @@
             <div class="row">
               <div class="col-sm-12" style="width: max-content">
                 <div class="d-inline-block rounded-circle m-2" style="
-                   
+
                     border: 0.125em solid #e2e5e3;
-                    
+
                   ">
                   <svg style="
                       width: 1em;
@@ -59,27 +59,13 @@
                   {{DeliveryProfileDTO?.address}}
                 </h4>
                 </div>
-                <!-- <button style="
-                    border: 1px solid #b7bbb8;
-                    background-color: transparent;
-                    border-radius: 1.5625em;
-                    color: #9a9e9b;
-                    font-size: 0.8125em;
-                    margin-top: 0.4375em;
-                    display: inline-block;
-                  ">
-                  <svg style="width: 0.9375em; height: 0.9375em; fill: #9a9e9b" xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true" viewBox="0.5 0.5 14 14" role="img">
-                    <path
-                      d="M12.063 4.679c.217-.002.416.03.527.235.105.195.025.375-.082.546-1.85 2.928-3.697 5.856-5.546 8.784-.112.18-.262.314-.479.232-.226-.086-.36-.262-.327-.525.106-.83.608-4.646.764-5.725.032-.226-.029-.279-.253-.277-1.227.01-2.454.002-3.678.008-.238 0-.455-.025-.58-.254-.127-.233.019-.409.143-.584L7.032.85c.073-.103.138-.213.252-.279.327-.196.689.033.689.449.006 1.1.012 2.2-.004 3.3-.004.28.068.372.357.369l3.737-.01">
-                    </path>
-                  </svg>
-                  Available now
-                </button> -->
               </div>
 
-           
+
             </div>
+          </div>
+          <div class="points-container">
+            <h3> النقاط المتبقية: {{DeliveryProfileDTO?.points}}</h3>
           </div>
           <hr style="width: 100%" />
 
@@ -87,9 +73,9 @@
           <h4 style="font-size: 1.1875em; font-weight: 500; margin-right: 4%;" >
             النبذة التعريفية
             <div class="d-inline-block rounded-circle" style="
-            
+
                 border: 0.125em solid #e2e5e3;
-             
+
               ">
               <svg style="
               width: 1em;
@@ -170,7 +156,7 @@
                     font-weight: bold;
                     background-color: #f6fbff;
                   " >
-                  {{ DeliveryProfileDTO?.educationLevelDTO?.dateFrom | date:'yyyy-MM-dd' }} </li> 
+                  {{ DeliveryProfileDTO?.educationLevelDTO?.dateFrom | date:'yyyy-MM-dd' }} </li>
                   </ul>
 
               </ul>
@@ -249,10 +235,10 @@
                 </ul>
               </div>
               <div class="text-center">
-                
+
                 <a class="sear " style="color: #404c68; font-weight: 600" routerLink="/delivery/filter"> ابدأ البحث عن المشاريع</a>
               </div>
-          
+
             </div>
           </div>
         </div>

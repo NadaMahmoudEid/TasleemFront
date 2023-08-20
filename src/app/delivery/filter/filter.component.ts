@@ -14,11 +14,16 @@ export class FilterComponent implements OnInit {
   JobByCountry: Jobs[] =[];
   JobByCountryCity: Jobs[]=[];
   JobByRequiredPoints: Jobs[]=[];
+  JobByRequiredPointsCountry: Jobs[]=[];
+  JobByRequiredPointsCountryCity: Jobs[]=[];
 
   IsJobList: boolean=true;
   IsJobByCountry: boolean=false;
   IsJobByCountryCity:boolean=false;
   IsJobByRequiredPoints: boolean=false;
+  IsJobByRequiredPointsCountry: boolean=false;
+  IsJobByRequiredPointsCountryCity: boolean=false;
+
 
   selectedCountry: string = '';
   selectedCity:string = '';
@@ -47,6 +52,7 @@ export class FilterComponent implements OnInit {
       'رأس الخيمة',
       'الفجيرة',
       'أم القيوين',
+      'العين',
     ],
 
   };
@@ -62,32 +68,69 @@ export class FilterComponent implements OnInit {
 
       console.log("jobList manar",this.JobLists);
     });
+
+    this.selectedRequiredPoints = 0;
   }
 
   onCountryChange(event: Event) {
     const selectedValue = (event.target as HTMLSelectElement).value;
     this.selectedCountry=selectedValue;
 
-     if(this.selectedCountry=="كل الدول")
+     if(this.selectedCountry!="كل الدول" && (this.selectedRequiredPoints==null ||this.selectedRequiredPoints==0))
      {
-       this.IsJobList=true;
-       this.IsJobByCountry=false;
-       this.cities = this.citiesByCountry[this.selectedCountry] || [];
-       console.log("manar",this.cities)
-
-     }
-     else
-     {
-      this.IsJobList=false;
       this.IsJobByCountry=true;
-      this._deliveryService.FilterJobByCountry(this.selectedCountry).subscribe((data) =>
+      this.IsJobByRequiredPointsCountry=false;
+      this.IsJobList=false;
+      this.IsJobByRequiredPoints=false;
+      this.IsJobByCountryCity=false;
+      this.IsJobByRequiredPointsCountryCity=false;
+
+        this._deliveryService.FilterJobByCountry(this.selectedCountry).subscribe((data) =>
       {
         console.log(data);
           this.JobByCountry=data
       });
       this.cities = this.citiesByCountry[this.selectedCountry] || [];
+     }
+     else if(this.selectedCountry!="كل الدول" && (this.selectedRequiredPoints!=null ||this.selectedRequiredPoints!=0))
+     {
+      this.IsJobByRequiredPointsCountry=true;
+      this.IsJobByCountry=false;
+      this.IsJobList=false;
+      this.IsJobByRequiredPoints=false;
+      this.IsJobByCountryCity=false;
+      this.IsJobByRequiredPointsCountryCity=false;
+
+      this.JobByRequiredPointsCountry=this.JobLists?.filter(job => job.requiredPoints <= this.selectedRequiredPoints && job.countryName==this.selectedCountry)
+
+      this.cities = this.citiesByCountry[this.selectedCountry] || [];
+     }
+
+     else if(this.selectedCountry=="كل الدول" && (this.selectedRequiredPoints>0))
+     {
+    this.IsJobByRequiredPoints=true;
+    this.IsJobList=false;
+    this.IsJobByCountry=false;
+    this.IsJobByCountryCity=false;
+    this.IsJobByRequiredPointsCountryCity=false;
+    this.IsJobByRequiredPointsCountry=false;
+
+     this.JobByRequiredPoints=this.JobLists?.filter(job => job.requiredPoints <= this.selectedRequiredPoints)
+
 
      }
+     else if(this.selectedCountry=="كل الدول")
+     {
+       this.IsJobList=true;
+       this.IsJobByCountry=false;
+       this.IsJobByRequiredPoints=false;
+       this.IsJobByCountryCity=false;
+       this.IsJobByRequiredPointsCountry=false;
+       this.IsJobByRequiredPointsCountryCity=false;
+
+
+     }
+
 
     this.cities = this.citiesByCountry[this.selectedCountry] || [];
     console.log("Cities:", this.cities);
@@ -96,10 +139,36 @@ export class FilterComponent implements OnInit {
   {
     const selectedValue = (event.target as HTMLSelectElement).value;
     this.selectedCity=selectedValue;
+   if(this.selectedCity!='كل المدن' && this.selectedCountry !="كل الدول" && (this.selectedRequiredPoints!=null ||this.selectedRequiredPoints!=0))
+   {
+    this.IsJobByRequiredPointsCountryCity=true;
+    this.IsJobByCountryCity=false;
+    this.IsJobList=false;
+    this.IsJobByCountry=false;
+    this.IsJobByRequiredPointsCountry=false;
+    this.IsJobByRequiredPoints=false;
 
+    this.JobByRequiredPointsCountryCity=this.JobLists?.filter(job => job.requiredPoints <= this.selectedRequiredPoints && job.countryName==this.selectedCountry && job.cityName==this.selectedCity)
+
+   }
+   if(this.selectedCity=='كل المدن' && this.selectedCountry !="كل الدول" && (this.selectedRequiredPoints!=null ||this.selectedRequiredPoints!=0))
+   {
+    this.IsJobByRequiredPointsCountry=true;
+    this.IsJobByRequiredPointsCountryCity=false;
+    this.IsJobByCountryCity=false;
+    this.IsJobList=false;
+    this.IsJobByCountry=false;
+    this.IsJobByRequiredPoints=false;
+
+    this.JobByRequiredPointsCountry=this.JobLists?.filter(job => job.requiredPoints <= this.selectedRequiredPoints && job.countryName==this.selectedCountry)
+
+   }
     this.IsJobByCountryCity=true;
     this.IsJobList=false;
     this.IsJobByCountry=false;
+    this.IsJobByRequiredPointsCountry=false;
+    this.IsJobByRequiredPoints=false;
+    this.IsJobByRequiredPointsCountryCity=false;
     this._deliveryService.FilterJobByCountryCity(this.selectedCountry, this.selectedCity).subscribe((result) =>
     {
          console.log(result);
@@ -108,24 +177,30 @@ export class FilterComponent implements OnInit {
   }
 
 
-  // onRequiredPointsChanged(event: any) {
-  //     this.selectedRequiredPoints=Number(event.target.value);
-  //     console.log('Selected Required Points:', this.selectedRequiredPoints);
+  onRequiredPointsChanged(newValue: number) {
+    this.selectedRequiredPoints = newValue;
+    console.log('Selected Required Points:', this.selectedRequiredPoints);
+    if((this.selectedRequiredPoints!=null||this.selectedRequiredPoints!=0) && this.selectedCountry!='كل الدول'&& this.selectedCity!='كل المدن'){
+      this.IsJobByRequiredPointsCountryCity=true;
+      this.IsJobByRequiredPoints=false;
+      this.IsJobList=false;
+      this.IsJobByCountry=false;
+      this.IsJobByCountryCity=false;
+      this.IsJobByRequiredPointsCountry=false;
 
-  //   this._deliveryService.FilterJobByRequiredPoints(this.selectedRequiredPoints).subscribe((data) =>{
-  //       console.log(data);
-  //       this.JobByRequiredPoints=data;
-  //   });
-  //   //this.JobByRequiredPoints=this.JobLists?.filter(job => job.requiredPoints <= this.selectedRequiredPoints)
+       this.JobByRequiredPointsCountryCity=this.JobLists?.filter(job => job.requiredPoints <= this.selectedRequiredPoints&& job.countryName==this.selectedCountry && job.cityName==this.selectedCity)
+    }
+    this.IsJobByRequiredPoints=true;
+    this.IsJobList=false;
+    this.IsJobByCountry=false;
+    this.IsJobByCountryCity=false;
+    this.IsJobByRequiredPointsCountryCity=false;
+    this.IsJobByRequiredPointsCountry=false;
+
+     this.JobByRequiredPoints=this.JobLists?.filter(job => job.requiredPoints <= this.selectedRequiredPoints)
 
 
-  //  // console.log('Filtered Jobs:', this.JobByRequiredPoints);
-  //  this.IsJobByRequiredPoints=true;
-  //  this.IsJobList=false;
-  //  this.IsJobByCountry=false;
-  //  this.IsJobByCountryCity=false;
-
-  // }
+  }
 
 }
 

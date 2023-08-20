@@ -8,6 +8,7 @@ export interface GetDeliveryProfileData
   profileImg:any;
   overView:string;
   yearExperinces:number;
+  points:number;
   educationLevelDTO:GetEducationLevelDTO;
   skills:string[];
   languges:string[];

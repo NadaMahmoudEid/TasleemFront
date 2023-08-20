@@ -13,7 +13,6 @@ export class RegistORComponent implements OnInit {
   IsChecked:boolean=false;
   constructor(private router: Router) { }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   onOptionSelected(option: string) {
@@ -36,7 +35,6 @@ export class RegistORComponent implements OnInit {
      else {
       this.IsChecked=true;
 
-      // No option selected, handle this case accordingly
     }
   }
 }

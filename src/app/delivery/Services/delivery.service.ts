@@ -35,9 +35,6 @@ export class DeliveryService {
   {
       return this._httpClient.get(`${this.url}/api/Jobs/GetJobsByCountryName/${country}/${city}`);
   }
-  FilterJobByRequiredPoints(requiredPoints:number): Observable<any>
-  {
-      return this._httpClient.get(`${this.url}/api/Jobs/GetJobsByRequiredPonits/${requiredPoints}`);
-  }
+
 
 }

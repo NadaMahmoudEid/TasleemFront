@@ -20,7 +20,7 @@ export class AddjobComponent implements OnInit {
     cities: string[] = [];
 
     citiesByCountry: { [key: string]: string[] } = {
-      oman: [
+      عمان: [
         'مسقط',
         'مسندم',
         ' البريمي',
@@ -33,7 +33,7 @@ export class AddjobComponent implements OnInit {
         'ظفار',
         'الوسطى',
       ],
-      uae: [
+      الأمارات: [
         'أبوظبى',
         'دبى',
         'الشارقة',
@@ -41,6 +41,7 @@ export class AddjobComponent implements OnInit {
         'رأس الخيمة',
         'الفجيرة',
         'أم القيوين',
+        'العين',
       ],
 
     };
