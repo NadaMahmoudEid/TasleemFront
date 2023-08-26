@@ -11,7 +11,7 @@
                 >
                   تفاصيل الملف الشخصي
                 </h1>
-  
+
                 <form
                   [formGroup]="DataProfileForm"
                   (ngSubmit)="submitData(DataProfileForm)"
@@ -30,15 +30,15 @@
                           (ngModelChange)="onInputChange('FullName', $event)"
                         />
                       </div>
-  
+
                       <div *ngIf="FullName?.errors != null && FullName?.touched">
                         <p *ngIf="FullName?.errors?.['required']" class="text-danger">
-                          يجب ادخال
+                          يجب ادخال الأسم كامل
                         </p>
                       </div>
                     </div>
                   </div>
-  
+
                   <!-- Message input -->
                   <div>
                     <div class="form-outline mb-4">
@@ -60,12 +60,12 @@
                         *ngIf="OverView?.errors?.['required']"
                         class="text-danger"
                       >
-                        يجب ادخال
+                      يجب ادخال نبذة بسيطة
                       </p>
                     </div>
                   </div>
-              
-  
+
+
                   <!-- Text input -->
                   <div class="form-outline mb-4">
                     <label class="form-label" for="form6Example4">العنوان</label>
@@ -76,18 +76,39 @@
                       class="form-control"
                       (ngModelChange)="onInputChange('Address', $event)"
                     />
-  
+
                     <div *ngIf="Address?.errors != null && Address?.touched">
                       <p
                         *ngIf="Address?.errors?.['required']"
                         class="text-danger"
                       >
-                        يجب ادخال
+                      يجب ادخال العنوان
                       </p>
                     </div>
                   </div>
-  
-                 
+
+                    <!-- Text input -->
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form6Example4">رقم الجوال</label>
+                      <input
+                        type="text"
+                        id="form6Example4"
+                        formControlName="PhoneNum"
+                        class="form-control"
+                        (ngModelChange)="onInputChange('PhoneNum', $event)"
+                      />
+
+                      <div *ngIf="PhoneNum?.errors != null && PhoneNum?.touched">
+                        <p
+                          *ngIf="PhoneNum?.errors?.['required']"
+                          class="text-danger"
+                        >
+                        يجب ادخال رقم الجوال
+                        </p>
+                      </div>
+                    </div>
+
+
                   <!-- languge  input -->
                   <ng-container formArrayName="languge">
                     <div style="display: flex; justify-content: space-between">
@@ -131,7 +152,7 @@
                       />
                     </div>
                   </ng-container>
-  
+
                   <div class="mb-3">
                     <label for="formFile" class="form-label">صورتك</label>
                     <div class="input-group">
@@ -146,7 +167,7 @@
                         (change)="onSelectFile($event)"
                       />
                     </div>
-  
+
                     <div
                       *ngIf="
                         profileImage?.errors != null && profileImage?.touched
@@ -160,7 +181,7 @@
                       </p>
                     </div>
                   </div>
-  
+
                   <div
                     *ngIf="showError"
                     class="alert alert-danger fade"

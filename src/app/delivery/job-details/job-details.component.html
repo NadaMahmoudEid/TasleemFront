@@ -13,47 +13,50 @@
 
     <main>
         <section class="job-details shadow ">
-            <div class="card">
-                <div class="card-header text-center " style="font-weight: bold; color:#0E1D34 ">
-                    تفاصيل الوظيفة </div>
+          <div class="card card-header">
+            <div class="d-flex">
+                <img src='data:image/png;base64,{{JobObj.client.profileImg}}'
+                     loading="lazy"
+                     class="img-fluid rounded-circle"
+                     alt="Profile Image"
+                     width="27"
+                     height="27">
+                <span class="p-2">{{JobObj.client.fullName}}</span>
+                <div class="m-auto" style="  font-weight: bold; color:#0E1D34">
+                    تفاصيل الوظيفة
+                </div>
             </div>
-            
+        </div>
+
 
             <div class="p-5">
-                <h1 class="job-title">عنوان الوظيفة</h1>
+                <h1 class="job-title">عنوان الوظيفة: {{JobObj.title}}</h1>
                 <div class="job-points ">
 
                     <ul class="coin-list">
-                        <li><i class="fas fa-coins"></i> 50 coins</li>
+                        <li><i class="fas fa-coins fs-4"></i> النقاط المطلوبة: {{JobObj.requiredPoints}}  </li>
                         <!-- Add more points as needed -->
                     </ul>
                 </div>
                 <div class="job-meta">
-                    <p class="job-location"> المكان: عمان</p>
-                    <p class="job-budget"> التكلفة: $1000 - $1500 </p>
+                    <p class="job-location"> الدولة:{{JobObj.countryName}} </p>
+                    <p class="job-location"> المدينة:{{JobObj.cityName}} </p>
+                    <p class="job-budget"> مكان التوصيل بالتفصيل:{{JobObj.addressDetails}}</p>
+                    <p class="job-budget"> رقم الجوال:{{JobObj.client.phoneNum}}</p>
+                    <p class="job-budget"> التكلفة:{{JobObj.budget}}</p>
                     <p class="job-date">Posted 2 days ago</p>
-                    <button class="apply-btn">التقديم</button>
+                    <button class="apply-btn"[ngStyle]="{'background-color': IsButtonClicked ? 'gray' : ''}"  (click)="AddProposal(JobObj.id)" [disabled]="IsButtonClicked">التقديم</button>
                 </div>
                 <div class="job-description">
-                    <h2>Description</h2>
+                    <h2>تفاصيل الوظيفة</h2>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ultricies fringilla massa,
-                        et
-                        tempus odio facilisis sit amet. Etiam malesuada, nisi vel tincidunt varius, eros justo volutpat
-                        est,
-                        vel dictum ipsum est nec sem. Integer eu odio sit amet erat finibus faucibus. Integer luctus
-                        quam
-                        ut neque varius, in elementum sem egestas.
+                        {{JobObj.details}}
                     </p>
-                    <p>
-                        Vestibulum ultrices ligula sit amet nibh vehicula, eget euismod mauris rhoncus. Curabitur vel
-                        vulputate sapien. Aenean nec metus nunc. Nunc venenatis, purus quis venenatis convallis, nulla
-                        odio
-                        mollis felis, non facilisis lectus velit quis magna.
-                    </p>
+                    <h5 class="mb-4">عدد التقديمات:{{JobObj.numOfProposal}}</h5>
+
                 </div>
             </div>
-            <!-- Add more job details sections as needed -->
+
         </section>
     </main>
 </body>

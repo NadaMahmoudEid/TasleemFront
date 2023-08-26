@@ -12,7 +12,7 @@ import { SharedService } from '../../shared/service/shared.service';
 })
 export class ProfileComponent implements OnInit {
   DeliveryProfileDTO: GetDeliveryProfileData | undefined;
-  HaveaProData: boolean = true;
+  HaveaProData: boolean = false;
   deliveryID: string = "";
   isButtonClicked = false;
   constructor(private router: Router, private _deliveryService: DeliveryService,private Shardservice:SharedService, private _loginService: LoginService) {
@@ -24,17 +24,16 @@ export class ProfileComponent implements OnInit {
     console.log(this.deliveryID)
     this._deliveryService.GetDeliveryProfileDataDTO(this.deliveryID).subscribe((resp) => {
       if (resp.message == "Success") {
-        
         this.DeliveryProfileDTO = resp.data;
         if (this.DeliveryProfileDTO?.fullName !=null ) {
           this.Shardservice.dataSubject.next(true)
           this.HaveaProData = this.Shardservice.dataSubject.value;
-          
-        }else{  
+
+        }else{
           this.Shardservice.dataSubject.next(false)
         }
         console.log("success", resp)
-      
+
       }
 
     }, error => console.log(error));

@@ -8,8 +8,8 @@
 			</div>
 
 			<label class="mt-1 ms-2">الدول: </label>
-      <div class="form-group d-flex col-sm-2 col-xs-6">
-			<select (change)="onCountryChange($event)" class="filter-price col-sm-3 filter form-control">
+      <div class="form-group d-flex col-sm-3 col-xs-6">
+			<select (change)="onCountryChange($event)" class="filter-price col-md-12 col-sm-3 filter form-control">
 				<option value="كل الدول" selected>كل الدول</option>
 				<option value="عمان">  عمان</option>
 				<option value="الأمارات">الأمارات</option>
@@ -19,7 +19,7 @@
       </div>
 			<label class="mt-1" style="margin-right: 6%;">المدن:</label>
 			<div class="form-group col-sm-3 col-xs-6">
-				<select (change)="onCityChange($event)" class="filter-price col-sm-3 filter form-control">
+				<select (change)="onCityChange($event)" class="filter-price col-md-12 col-sm-3 filter form-control">
 					<option value="كل المدن" selected>كل المدن</option>
 					<option *ngFor="let city of cities" [value]="city">{{city}}</option>
 				</select>
@@ -27,10 +27,20 @@
 		</form>
 	</div>
 
-  <div *ngIf="IsJobList">
+  <div *ngIf="IsJobList"  >
 	<div class="row  justify-content-center pb-5" id="products" *ngFor="let i of JobLists ">
 		<div class="card m-2 w-75 ">
-			<h5 class="card-header"> {{i.title}}</h5>
+      <div class="card-header ">
+        <img src='data:image/png;base64,{{i.client.profileImg}}'
+        loading="lazy"
+        class="img-fluid rounded-circle"
+        alt="Profile Image"
+        width="27"
+        height="27">
+         <span class="p-2">{{i.client.fullName}}</span>
+         <h5 class="text-center"> {{i.title}}</h5>
+      </div>
+
 			<div class="card-body">
 				<p class="card-text">{{i.details}}</p>
         <small class="card-text fs-5  text-primary">الدولة: {{i.countryName}}</small>
@@ -47,7 +57,16 @@
     <div *ngIf="IsJobByCountry">
       <div class="row  justify-content-center pb-5" id="products" *ngFor="let i of JobByCountry ">
         <div class="card m-2 w-75 ">
-          <h5 class="card-header"> {{i.title}}</h5>
+          <div class="card-header ">
+            <img src='data:image/png;base64,{{i.client.profileImg}}'
+            loading="lazy"
+            class="img-fluid rounded-circle"
+            alt="Profile Image"
+            width="27"
+            height="27">
+             <span class="p-2">{{i.client.fullName}}</span>
+             <h5 class="text-center"> {{i.title}}</h5>
+          </div>
           <div class="card-body">
             <p class="card-text">{{i.details}}</p>
             <small class="card-text fs-5  text-primary">الدولة: {{i.countryName}}</small>
@@ -63,7 +82,16 @@
       <div *ngIf="IsJobByCountryCity">
         <div class="row  justify-content-center pb-5" id="products" *ngFor="let i of JobByCountryCity ">
           <div class="card m-2 w-75 ">
-            <h5 class="card-header"> {{i.title}}</h5>
+            <div class="card-header ">
+              <img src='data:image/png;base64,{{i.client.profileImg}}'
+              loading="lazy"
+              class="img-fluid rounded-circle"
+              alt="Profile Image"
+              width="27"
+              height="27">
+               <span class="p-2">{{i.client.fullName}}</span>
+               <h5 class="text-center"> {{i.title}}</h5>
+            </div>
             <div class="card-body">
               <p class="card-text">{{i.details}}</p>
               <small class="card-text fs-5 text-primary">الدولة: {{i.countryName}}</small>
@@ -79,7 +107,16 @@
         <div *ngIf="IsJobByRequiredPoints">
           <div class="row  justify-content-center pb-5" id="products" *ngFor="let i of JobByRequiredPoints">
             <div class="card m-2 w-75 ">
-              <h5 class="card-header"> {{i.title}}</h5>
+              <div class="card-header ">
+                <img src='data:image/png;base64,{{i.client.profileImg}}'
+                loading="lazy"
+                class="img-fluid rounded-circle"
+                alt="Profile Image"
+                width="27"
+                height="27">
+                 <span class="p-2">{{i.client.fullName}}</span>
+                 <h5 class="text-center"> {{i.title}}</h5>
+              </div>
               <div class="card-body">
                 <p class="card-text">{{i.details}}</p>
                 <small class="card-text fs-5 text-primary">الدولة: {{i.countryName}}</small>
@@ -95,7 +132,16 @@
         <div *ngIf="IsJobByRequiredPointsCountry">
           <div class="row  justify-content-center pb-5" id="products" *ngFor="let i of JobByRequiredPointsCountry">
             <div class="card m-2 w-75 ">
-              <h5 class="card-header"> {{i.title}}</h5>
+              <div class="card-header ">
+                <img src='data:image/png;base64,{{i.client.profileImg}}'
+                loading="lazy"
+                class="img-fluid rounded-circle"
+                alt="Profile Image"
+                width="27"
+                height="27">
+                 <span class="p-2">{{i.client.fullName}}</span>
+                 <h5 class="text-center"> {{i.title}}</h5>
+              </div>
               <div class="card-body">
                 <p class="card-text">{{i.details}}</p>
                 <small class="card-text fs-5 text-primary">الدولة: {{i.countryName}}</small>
@@ -111,7 +157,16 @@
         <div *ngIf="IsJobByRequiredPointsCountryCity">
           <div class="row  justify-content-center pb-5" id="products" *ngFor="let i of JobByRequiredPointsCountryCity">
             <div class="card m-2 w-75 ">
-              <h5 class="card-header"> {{i.title}}</h5>
+              <div class="card-header ">
+                <img src='data:image/png;base64,{{i.client.profileImg}}'
+                loading="lazy"
+                class="img-fluid rounded-circle"
+                alt="Profile Image"
+                width="27"
+                height="27">
+                 <span class="p-2">{{i.client.fullName}}</span>
+                 <h5 class="text-center"> {{i.title}}</h5>
+              </div>
               <div class="card-body">
                 <p class="card-text">{{i.details}}</p>
                 <small class="card-text fs-5 text-primary">الدولة: {{i.countryName}}</small>

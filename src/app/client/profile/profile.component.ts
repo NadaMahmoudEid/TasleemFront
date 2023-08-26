@@ -13,7 +13,7 @@ import { GetclientProfileData } from 'src/app/delivery/Interfaces/GetclientProfi
 })
 export class ProfileComponent {
   GetclientProfileData: GetclientProfileData | undefined;
-  HaveaProData: boolean = true;
+  HaveaProData: boolean = false;
   deliveryID: string = "";
   isButtonClicked = false;
   constructor(private router: Router, private _clientService: ClientService,private Shardservice:SharedService, private _loginService: LoginService) {
@@ -25,17 +25,17 @@ export class ProfileComponent {
     console.log(this.deliveryID)
     this._clientService.GetClientProfileDataDTO(this.deliveryID).subscribe((resp) => {
       if (resp.message == "Success") {
-        
+
         this.GetclientProfileData = resp.data;
         if (this.GetclientProfileData?.fullName !=null ) {
           this.Shardservice.dataSubject.next(true)
           this.HaveaProData = this.Shardservice.dataSubject.value;
-          
-        }else{  
+
+        }else{
           this.Shardservice.dataSubject.next(false)
         }
         console.log("success", resp)
-      
+
       }
 
     }, error => console.log(error));

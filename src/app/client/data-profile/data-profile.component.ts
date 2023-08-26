@@ -28,9 +28,9 @@ export class DataProfileComponent {
    DataProfileForm = this.formBuilder.group({
     FullName: ['', [Validators.required]],
     OverView: ['', [Validators.required]],
-   
+
     Address: ['', [Validators.required]],
-  
+    PhoneNum:['', [Validators.required]],
     profileImage: ['',[Validators.required]],
     languge:new FormArray([]),
 
@@ -47,7 +47,10 @@ export class DataProfileComponent {
   get Address() {
     return this.DataProfileForm.get('Address');
   }
- 
+  get PhoneNum()
+  {
+    return this.DataProfileForm.get('PhoneNum');
+  }
   get profileImage() {
     return this.DataProfileForm.get('ProfileImage');
   }
@@ -63,7 +66,7 @@ export class DataProfileComponent {
 
   }
 
- 
+
 
   onInputChange(fieldName: string, value: any) {
 
@@ -83,9 +86,9 @@ export class DataProfileComponent {
 
     if (this.DataProfileForm.valid) {
 
-     
+
       const LangugeFormArray = this.DataProfileForm.get('languge') as FormArray;
-   
+
       console.log(LangugeFormArray.length);
       if( LangugeFormArray.length >=1){
         console.log("enterCondtion")
@@ -94,24 +97,24 @@ export class DataProfileComponent {
       this.changedInputs.push("Languages");
 
         console.log(DataProfileForm.value);
-    
+
 
 
               const formData = new FormData();
               formData.append('Id',this._loginService.getUserId());
               formData.append('FullName',this.DataProfileForm.get('FullName')?.value!) ;
               formData.append('Address', this.DataProfileForm.get('Address')?.value!);
-           
+              formData.append('PhoneNum',this.DataProfileForm.get('PhoneNumber')?.value!);
                 formData.append('ProfileImg', this.selectedFile, this.selectedFile.name);
-                
-             
+
+
               formData.append('OverView', this.DataProfileForm.get('OverView')?.value!);
-            
+
               for (const control of LangugeFormArray.controls) {
                 formData.append('Languges', control.value);
               }
-             
-              
+
+
               for (let i = 0; i < this.changedInputs.length; i++) {
                 formData.append('properties', this.changedInputs[i]);
 

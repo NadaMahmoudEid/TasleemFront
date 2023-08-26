@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DeliveryService } from '../Services/delivery.service';
 import { Jobs } from '../Interfaces/Job';
+import { JobService } from '../Services/job.service';
 
 @Component({
   selector: 'app-filter',
@@ -70,6 +71,7 @@ export class FilterComponent implements OnInit {
     });
 
     this.selectedRequiredPoints = 0;
+
   }
 
   onCountryChange(event: Event) {
