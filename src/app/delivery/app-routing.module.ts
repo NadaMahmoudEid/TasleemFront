@@ -9,6 +9,7 @@ import { JobPorposalsComponent } from '../client/job-porposals/job-porposals.com
 import { FilterComponent } from './filter/filter.component';
 import { DataProfileComponent } from './data-profile/data-profile.component';
 import { JobDetailsComponent } from './job-details/job-details.component';
+import { SuggestionsPageComponent } from './suggestions-page/suggestions-page.component';
 
 const routes: Routes = [
 {path:'savedjobs',component:SavedJobComponent},
@@ -18,7 +19,7 @@ const routes: Routes = [
 {path:'jobDetails/:id',component:JobDetailsComponent},
 {path:'ProfileData',component:DataProfileComponent},
 {path:'filter',component:FilterComponent},
-
+{path:'suggestions',component:SuggestionsPageComponent},
 ]
 
 @NgModule({

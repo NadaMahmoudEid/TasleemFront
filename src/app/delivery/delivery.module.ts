@@ -10,6 +10,7 @@ import { PorposalComponent } from './porposal/porposal.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DataProfileComponent } from './data-profile/data-profile.component';
 import { RouterModule } from '@angular/router';
+import { SuggestionsPageComponent } from './suggestions-page/suggestions-page.component';
 
 
 
@@ -21,7 +22,8 @@ import { RouterModule } from '@angular/router';
     NotifyComponent,
     JobDetailsComponent,
     PorposalComponent,
-    DataProfileComponent
+    DataProfileComponent,
+    SuggestionsPageComponent
   ],
   imports: [
     CommonModule,

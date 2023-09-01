@@ -1,64 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Job Details</title>
+  </head>
 
-</head>
-
-<body>
-
-
+  <body>
     <main>
-        <section class="job-details shadow ">
-          <div class="card card-header">
-            <div class="d-flex">
-                <img src='data:image/png;base64,{{JobObj.client.profileImg}}'
-                     loading="lazy"
-                     class="img-fluid rounded-circle"
-                     alt="Profile Image"
-                     width="27"
-                     height="27">
-                <span class="p-2">{{JobObj.client.fullName}}</span>
-                <div class="m-auto" style="  font-weight: bold; color:#0E1D34">
-                    تفاصيل الوظيفة
-                </div>
+      <section class="job-details shadow">
+        <div class="card card-header">
+          <div class="d-flex">
+            <img
+              src="data:image/png;base64,{{ JobObj.client.profileImg }}"
+              loading="lazy"
+              class="img-fluid rounded-circle"
+              alt="Profile Image"
+              width="27"
+              height="27"
+            />
+            <span class="p-2">{{ JobObj.client.fullName }}</span>
+            <div class="m-auto" style="font-weight: bold; color: #0e1d34">
+              تفاصيل الوظيفة
             </div>
+          </div>
         </div>
 
-
-            <div class="p-5">
-                <h1 class="job-title">عنوان الوظيفة: {{JobObj.title}}</h1>
-                <div class="job-points ">
-
-                    <ul class="coin-list">
-                        <li><i class="fas fa-coins fs-4"></i> النقاط المطلوبة: {{JobObj.requiredPoints}}  </li>
-                        <!-- Add more points as needed -->
-                    </ul>
-                </div>
-                <div class="job-meta">
-                    <p class="job-location"> الدولة:{{JobObj.countryName}} </p>
-                    <p class="job-location"> المدينة:{{JobObj.cityName}} </p>
-                    <p class="job-budget"> مكان التوصيل بالتفصيل:{{JobObj.addressDetails}}</p>
-                    <p class="job-budget"> رقم الجوال:{{JobObj.client.phoneNum}}</p>
-                    <p class="job-budget"> التكلفة:{{JobObj.budget}}</p>
-                    <p class="job-date">Posted 2 days ago</p>
-                    <button class="apply-btn"[ngStyle]="{'background-color': IsButtonClicked ? 'gray' : ''}"  (click)="AddProposal(JobObj.id)" [disabled]="IsButtonClicked">التقديم</button>
-                </div>
-                <div class="job-description">
-                    <h2>تفاصيل الوظيفة</h2>
-                    <p>
-                        {{JobObj.details}}
-                    </p>
-                    <h5 class="mb-4">عدد التقديمات:{{JobObj.numOfProposal}}</h5>
-
-                </div>
+        <div class="p-5">
+          <h1 class="job-title">عنوان الوظيفة: {{ JobObj.title }}</h1>
+          <div class="job-points">
+            <ul class="coin-list">
+              <li>
+                <i class="fas fa-coins fs-4"></i> النقاط المطلوبة:
+                {{ JobObj.requiredPoints }}
+              </li>
+              <!-- Add more points as needed -->
+            </ul>
+          </div>
+          <div class="job-meta">
+            <p class="job-location">الدولة:{{ JobObj.countryName }}</p>
+            <p class="job-location">المدينة:{{ JobObj.cityName }}</p>
+            <!-- <p class="job-budget"> مكان التوصيل بالتفصيل:{{JobObj.addressDetails}}</p>
+                    <p class="job-budget"> رقم الجوال:{{JobObj.client.phoneNum}}</p> -->
+            <p class="job-budget">التكلفة:{{ JobObj.budget }}</p>
+            <p class="job-date">Posted 2 days ago</p>
+            <div class="d-flex">
+              <button
+                class="apply-btn col-12"
+                [ngStyle]="{
+                  'background-color': IsButtonClicked ? 'gray' : ''
+                }"
+                (click)="AddProposal(JobObj.id)"
+                [disabled]="IsButtonClicked"
+              >
+                التقديم
+              </button>
+              <div class="alert alert-success me-3 col-10 my-2" *ngIf="proposalmsg" role="alert">
+                {{proposalmsg}}
+              </div>
             </div>
-
-        </section>
+          </div>
+          <div class="job-description">
+            <h2>تفاصيل الوظيفة</h2>
+            <p>
+              {{ JobObj.details }}
+            </p>
+            <h5 class="mb-4">عدد التقديمات:{{ JobObj.numOfProposal }}</h5>
+          </div>
+        </div>
+      </section>
     </main>
-</body>
-
+  </body>
 </html>

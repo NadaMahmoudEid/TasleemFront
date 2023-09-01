@@ -17,6 +17,10 @@ export class ProposalService {
    {
     return this._httpClient.post(`${this.url}/api/Proposal/AddProposal`,proposalDto)
    }
+   checkDeliveryAvilableinJobPostDTO(data:object):Observable<any>
+   {
+    return this._httpClient.post(`${this.url}/api/Proposal/checkDeliveryAvilableinJobPost`,data)
+   }
 
 
 }
