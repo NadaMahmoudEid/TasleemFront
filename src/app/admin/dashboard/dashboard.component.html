@@ -1,0 +1,87 @@
+<div class=" ">
+    <div class="card rounded-0 ms-4 table-responsive">
+        <span class="fw-bold fs-4 text-center p-4">متابعة الطلبات</span>
+        <div class="alert alert-success text-center" role="alert" *ngIf="showAlert">
+        {{ AlertMsg }}
+      </div>
+
+
+        <table class="table table-bordered table-hover text-center border">
+            <thead class="border">
+          
+                <th class="border">اسم العميل</th>
+                <th class="border">العنوان</th>
+                <th class="border">الدولة</th>
+                <th class="border">التكلفة</th>
+                <th class="border">عدد النقاط</th>
+                <th class="border">تفاصيل/رفض/قبول</th>
+            </thead>
+
+            <tbody class="border">
+                <tr class="border" class="border py-auto" *ngFor="let client of waitingclient">
+
+
+
+                    <td class="border">{{client?.client.fullName}}</td>
+                    <td class="border">{{client?.title}}</td>
+                    <td class="border">{{client?.countryName}}</td>
+                    <td class="border">{{client?.budget}}</td>
+                    <td class="border">{{client?.requiredPoints}}</td>
+                    
+                    <td class="border">
+                        <button class="btn btn-success m-2 buttonn1" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">قبول</button>
+                            <button class="btn btn-warning m-2 buttonn3" data-bs-toggle="modal"
+                             (click)="details(client.id)">التفاصيل</button>
+                  
+                        <button class="btn btn-danger m-2 buttonn2" data-bs-toggle="modal"
+                            data-bs-target="#close">رفض</button>
+                  </td>
+                    <div class="modal " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content " style="  margin-top: 60%;">
+                                <div class="modal-header">
+                                    <h5 class="modal-title fs-5" id="exampleModalLabel">نعم</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    هل تريد تاكيد قبول طلب العميل
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">رجوع</button>
+                                 <button type="button" class="btn btn-success" (click)="AcceptOrder(client?.id,client?.client.id)" data-bs-dismiss="modal" >تاكيد</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 
+                    <div class="modal " id="close" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content" style="  margin-top: 60%;">
+                                <div class="modal-header">
+                                    <h5 class="modal-title fs-5" id="exampleModalLabel">التاكيد</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    هل تريد تاكيد رفض الاشتراك
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">رجوع</button>
+                                    <button type="button" class="btn btn-success" (click)="RejectOrder(client.id,client.client.id)" data-bs-dismiss="modal" >نعم</button>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Modal -->
+
+    </div>
+</div>

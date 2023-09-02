@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'delivery', loadChildren: () => import('./delivery/delivery.module').then(m => m.DeliveryModule)},
   { path: 'chat', loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule)},
   { path: 'about', loadChildren: () => import('./about/about.module').then(m => m.AboutModule)},
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},
   
   { path: '**', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) }
 

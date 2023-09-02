@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Jobs } from '../Interfaces/Job';
@@ -35,6 +35,19 @@ export class DeliveryService {
   {
       return this._httpClient.get(`${this.url}/api/Jobs/GetJobsByCountryName/${country}/${city}`);
   }
+AddComplaintsِnAndSuggestions(data:any): Observable<any>
+{
 
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+  
+  return this._httpClient.post(`${this.url}/api/ComplaintsAndSuggestions/AddComplaintsAndSuggestions`, data);
+  
+  // return this._httpClient.post(`${this.url}/api/ComplaintsAndSuggestions/AddComplaintsAndSuggestions`,data);
+
+}
 
 }
