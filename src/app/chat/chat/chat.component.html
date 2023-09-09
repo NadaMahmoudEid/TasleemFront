@@ -121,12 +121,20 @@
           <p class="text"> 9 pm at the bar if possible 😳</p>
         </div>
         <p class="time"> 15h09</p>
+
+        <div *ngFor="let message of messages">
+          {{ message }}
+        </div>
       </div>
-      <div class="footer-chat">
+      <form [formGroup]="ChatForm" >
+      <div class="footer-chat" >
         <i class="icon fa fa-smile-o clickable smile" style="font-size:25pt;" aria-hidden="true"></i>
-        <input type="text" class="write-message" placeholder="Type your message here"/>
-        <i class="icon send fa fa-paper-plane-o clickable" aria-hidden="true"></i>
+        <input type="text" class="write-message form-control" formControlName="Msg" placeholder="اكتب رسالتك هنا"/>
+        <i class="icon send fa fa-paper-plane-o clickable" aria-hidden="true"(click)="send()"></i>
       </div>
+    </form>
+   
+    
     </section>
   </div>
 </div>
