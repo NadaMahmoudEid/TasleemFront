@@ -11,14 +11,13 @@
     <div class="col-8">عنوان الطلب:{{ data.title }}</div>
     <div [ngSwitch]="data.isVerified">
       <div class="col-12 mb-3" *ngSwitchCase="0">الموافقة في انتظار</div>
-      <div class="col-12 mb-3" *ngSwitchCase="1">الموافقة مرفوضة</div>
-      <div class="col-12 mb-3" *ngSwitchCase="2">الموافقة على النشر</div>
+      <div class="col-12 mb-3" *ngSwitchCase="1">تم الرفض </div>
+      <div class="col-12 mb-3" *ngSwitchCase="2"> تم الموافقة علي النشر </div>
       <div class="col-12 mb-3" *ngSwitchDefault>
         Default content if no match is found
       </div>
     </div>
   </div>
-    <!-- <div class="col-5">السائق : لم يحدد بعد</div> -->
   </div>
   <br />
   <div
@@ -36,9 +35,11 @@
     <h6 class="col-5">الدولة:{{data.countryName}}</h6>
     <h6 class="col-5">المدينة:{{data.cityName}}</h6>
     <h6 class="col-5">المكان بالتفصيل:{{data.addressDetails}}</h6>
-    <div class="d-flex">
-      <h6>عدد التقديمات</h6><a class="col-5"> :{{data.numOfProposal}}</a>
-
+    <div>
+      <h6 >التكلفة: {{data.budget}}</h6>
+      <div class="d-flex">
+      <h6>عدد التقديمات</h6><a class="col-5">:{{data.numOfProposal}}</a>
+      </div>
     </div>
 
   </div>

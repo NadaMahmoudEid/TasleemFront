@@ -15,7 +15,7 @@ export class DeliveryService {
 
 
    AllJobs(): Observable<Jobs[]> {
-    return this._httpClient.get<Jobs[]>(`${this.url}/api/Jobs/AllJobs`);
+    return this._httpClient.get<Jobs[]>(`${this.url}/api/Jobs/GetAllJobsConfirmed`);
   }
   GetDeliveryProfileDataDTO(deliveryId:string):Observable<any>
   {
@@ -43,9 +43,9 @@ AddComplaintsِnAndSuggestions(data:any): Observable<any>
       'Content-Type': 'application/json'
     })
   };
-  
+
   return this._httpClient.post(`${this.url}/api/ComplaintsAndSuggestions/AddComplaintsAndSuggestions`, data);
-  
+
   // return this._httpClient.post(`${this.url}/api/ComplaintsAndSuggestions/AddComplaintsAndSuggestions`,data);
 
 }

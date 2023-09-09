@@ -153,7 +153,7 @@ export class FilterComponent implements OnInit {
     this.JobByRequiredPointsCountryCity=this.JobLists?.filter(job => job.requiredPoints <= this.selectedRequiredPoints && job.countryName==this.selectedCountry && job.cityName==this.selectedCity)
 
    }
-   else if(this.selectedCity=='كل المدن' && this.selectedCountry !='كل الدول'&& (this.selectedRequiredPoints!=null ||this.selectedRequiredPoints!=0))
+   if(this.selectedCity=='كل المدن' && this.selectedCountry !='كل الدول'&& (this.selectedRequiredPoints!=null ||this.selectedRequiredPoints!=0))
    {
     this.IsJobByRequiredPointsCountry=true;
     this.IsJobByRequiredPointsCountryCity=false;
