@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { EducationLevelDTO } from '../Interfaces/export interface DeliveryProfileDTO ';
-import { DeliveryProfileDTO } from '../Interfaces/DeliveryProfileDTO';
 import { LoginService } from 'src/app/auth/Services/login.service';
 import { DeliveryService } from '../Services/delivery.service';
 import { Router } from '@angular/router';
@@ -16,31 +14,6 @@ export class DataProfileComponent implements OnInit{
   selectedFile!: File;
   showError :boolean=false
   changedInputs: string[] = [];
-EducationLevel :EducationLevelDTO={
-  Name:"",
-  DateFrom : new Date(),
-  DateTo :new Date (),
-  DeliveryID :""
-}
-DeliveryProfileDTO:DeliveryProfileDTO={
-  Id: '',
-  FullName: '',
-  Address: '',
-  ProfileImg: undefined,
-  OverView: '',
-  YearExperinces: 0,
-  EducationLevelDTO: {
-    Name:"",
-  DateFrom : new Date(),
-  DateTo :new Date (),
-  DeliveryID :""
-  },
-  Skills: [],
-  Languges: [],
-  properties: []
-}
-
-
 
   constructor(private formBuilder: FormBuilder ,private Shardservice:SharedService, private _loginService : LoginService ,
      private _deliveryService : DeliveryService , private _router :Router) {
@@ -91,16 +64,18 @@ DeliveryProfileDTO:DeliveryProfileDTO={
   get skill(){
     return (<FormArray>this.DataProfileForm.get("skill")).controls;
   }
-  addall(){
+  get languge(){
+    return (<FormArray>this.DataProfileForm.get("languge")).controls;
+  }
+
+  addskill(){
     const control=new FormControl(null,[Validators.required]);
 
     (<FormArray>this.DataProfileForm.get('skill')).push(control);
 
   }
 
-  get languge(){
-    return (<FormArray>this.DataProfileForm.get("languge")).controls;
-  }
+
   addlan(){
     const control=new FormControl(null,[Validators.required]);
 
@@ -108,9 +83,7 @@ DeliveryProfileDTO:DeliveryProfileDTO={
 
   }
 
-  changeImg(event:any){
-    this.DeliveryProfileDTO.ProfileImg = event.target.files[0]
-  }
+
 
   onInputChange(fieldName: string, value: any) {
 
@@ -132,70 +105,49 @@ DeliveryProfileDTO:DeliveryProfileDTO={
 
       const skillFormArray = this.DataProfileForm.get('skill') as FormArray;
       const LangugeFormArray = this.DataProfileForm.get('languge') as FormArray;
-      console.log(skillFormArray.length);
-      console.log(LangugeFormArray.length);
+
+      console.log("Skill Length",skillFormArray.length);
+      console.log("Language Length",LangugeFormArray.length);
+
       if(skillFormArray.length >=1 && LangugeFormArray.length >=1){
         console.log("enterCondtion")
 
-      this.changedInputs.push("Skills");
-      this.changedInputs.push("Languages");
 
-        console.log(DataProfileForm.value);
-        this.EducationLevel.Name= this.DataProfileForm.get('titleEdu')?.value!;
-        this.EducationLevel.DateFrom= new Date (this.DataProfileForm.get('titleEdufrom')?.value!);
-        this.EducationLevel.DateTo= new Date (this.DataProfileForm.get('titleEduto')?.value!);
+        console.log("Data Delivery Profile Form",DataProfileForm.value);
 
-        this.EducationLevel.DeliveryID= this._loginService.getUserId();
-
-        console.log(this.EducationLevel);
-
-            this.DeliveryProfileDTO.Id=this._loginService.getUserId();
-            this.DeliveryProfileDTO.Address = this.DataProfileForm.get('address')?.value!;
-            this.DeliveryProfileDTO.OverView = this.DataProfileForm.get('description')?.value!;
-            this.DeliveryProfileDTO.FullName = this.DataProfileForm.get('name')?.value!;
-            this.DeliveryProfileDTO.YearExperinces = Number(this.DataProfileForm.get('YearExperinces')?.value);
-            this.DeliveryProfileDTO.YearExperinces = Number(this.DataProfileForm.get('YearExperinces')?.value);
-            this.DeliveryProfileDTO.EducationLevelDTO = this.EducationLevel
-            this.DeliveryProfileDTO.properties = this.changedInputs;
-
-            for (const control of skillFormArray.controls) {
-              this.DeliveryProfileDTO.Skills.push(control.value);}
-
-            for (const control of LangugeFormArray.controls) {
-              this.DeliveryProfileDTO.Languges.push(control.value);}
 
 
               const formData = new FormData();
-              formData.append('Id',this.DeliveryProfileDTO.Id);
-              formData.append('FullName',this.DeliveryProfileDTO.FullName) ;
-              formData.append('Address', this.DeliveryProfileDTO.Address);
+              formData.append('Id',this._loginService.getUserId());
+              formData.append('FullName',this.DataProfileForm.get('name')?.value!) ;
+              formData.append('Address', this.DataProfileForm.get('address')?.value!);
 
-              formData.append('ProfileImg', this.DeliveryProfileDTO.ProfileImg);
-              formData.append('OverView', this.DeliveryProfileDTO.OverView);
-              formData.append('YearExperinces', this.DeliveryProfileDTO.YearExperinces.toString());
+              formData.append('ProfileImg',  this.selectedFile, this.selectedFile.name);
+              formData.append('OverView', this.DataProfileForm.get('description')?.value!);
+              formData.append('YearExperinces', this.DataProfileForm.get('YearExperinces')?.value!);
 
-              formData.append('EducationLevelDTO.Name', this.DeliveryProfileDTO.EducationLevelDTO.Name);
+              formData.append('EducationLevelDTO.Name', this.DataProfileForm.get('titleEdu')?.value!);
 
-              formData.append('EducationLevelDTO.DateFrom', this.DeliveryProfileDTO.EducationLevelDTO.DateFrom.toDateString());
+              formData.append('EducationLevelDTO.DateFrom', this.DataProfileForm.get('titleEdufrom')?.value!);
 
-              formData.append('EducationLevelDTO.DateTo', this.DeliveryProfileDTO.EducationLevelDTO.DateTo.toDateString());
+              formData.append('EducationLevelDTO.DateTo', this.DataProfileForm.get('titleEduto')?.value!);
 
-              formData.append('EducationLevelDTO.DeliveryID', this.DeliveryProfileDTO.EducationLevelDTO.DeliveryID);
-              for (let i = 0; i < this.DeliveryProfileDTO.Skills.length; i++) {
-                formData.append('Skills', this.DeliveryProfileDTO.Skills[i]);
+              formData.append('EducationLevelDTO.DeliveryID', this._loginService.getUserId());
 
-
-              }
-              for (let i = 0; i < this.DeliveryProfileDTO.Languges.length; i++) {
-                formData.append('Languges', this.DeliveryProfileDTO.Languges[i]);
+              for (const control of skillFormArray.controls) {
+                formData.append('Skills', control.value);
 
 
               }
-              for (let i = 0; i < this.DeliveryProfileDTO.properties.length; i++) {
-                formData.append('properties', this.DeliveryProfileDTO.properties[i]);
+              for (const control of LangugeFormArray.controls) {
+                formData.append('Languges', control.value);
+              }
 
+              for (let i = 0; i < this.changedInputs.length; i++) {
+                formData.append('properties', this.changedInputs[i]);
 
               }
+
               this._deliveryService.AddDeliveryProfile(formData).subscribe((resp)=>{
                 console.log("manar",resp)
                 if(resp.message=="Success"){

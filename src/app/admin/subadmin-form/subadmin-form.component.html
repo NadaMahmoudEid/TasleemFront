@@ -1,0 +1,43 @@
+
+<form [formGroup]="userForm" class="text-center border border-light p-5 col-10  m-auto">
+
+    <p class="h4 mb-4 pt-5">أضافة ادمن </p>
+
+
+
+<div class="form mb-4">
+    <div class="col-9 m-auto mb-5">
+        <input type="text" formControlName="userName" id="defaultRegisterFormFirstName" class="form-control" placeholder="الأسم">
+        
+    </div>
+    <div class="col-9 m-auto mb-5">
+        <input type="password" formControlName="password" id="defaultRegisterFormLastName" class="form-control" placeholder="الرقم السري">
+    </div>
+</div>
+
+<div *ngIf="password?.touched && password?.invalid" class="text-center">
+    <p *ngIf="password?.errors?.['required']" class="text-danger">
+      برجاء ادخال كلمه السر
+    </p>
+    <p *ngIf="password?.errors?.['minlength'] && password?.dirty"
+      class="text-danger">
+    يجب ان تكون كلمة السر على الاقل 4 احرف
+    </p>
+    
+  </div>
+  
+<div *ngIf="userName.touched && userName?.invalid" class="text-center">
+    <p *ngIf="userName?.errors?.['required']" class="text-danger">
+      برجاء ادخال اسم المستخدم
+    </p>
+    <p *ngIf="userName?.errors?.['minlength'] && userName?.dirty"
+      class="text-danger">
+    يجب ان يتكون الاسم  على الاقل من 3 احرف   </p>
+    
+  </div>
+
+<button class="btn text-light my-4 col-7 btn-block" type="submit">أضافة</button>
+
+<hr>
+
+</form>

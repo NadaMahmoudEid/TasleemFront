@@ -12,7 +12,10 @@ export class ClientService {
    }
 
 
-
+   GetAllDeliveryChatWithClientId(clientId:string):Observable<any>
+   {
+     return this._httpClient.get<any>(`${this.url}/api/Chat/GetAllDeliveriesChatWithSpecificClient?ClientId=${clientId}`);
+   }
  
   GetClientProfileDataDTO(clientid:string):Observable<any>
   {

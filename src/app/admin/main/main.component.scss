@@ -161,10 +161,11 @@ body {
 	color: #262626;
 	background: #fafafa;
 }
-
+img{ background-color: #404c68;
+background-size: contain}
 .sidebar {
-	margin: auto;
-height: 80vh;
+	margin-top:4.6%;
+height: 83vh;
 	left: 0;
 	display: flex;
 	flex-direction: column;
@@ -184,7 +185,7 @@ display: grid;
 
 }
 .sidebar button{
-	color: rgb(16, 16, 179);
+	color: #404c68;
 	background: transparent;
 	height: 60px;
 	font-size: x-large;
@@ -256,10 +257,10 @@ display: grid;
 }
 
 .sidebar button img {
-	width: 66px;
-    height: 64px;
-    border-radius: 50%;
-		transition: .2s;
+    width: 146%;
+    height: 233%;
+    border-radius: 76%;
+    transition: 0.2s;
 }
 
 .sidebar button > span > i span {

@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DataProfileComponent } from './data-profile/data-profile.component';
 import { RouterModule } from '@angular/router';
 import { SuggestionsPageComponent } from './suggestions-page/suggestions-page.component';
+import { DeliveryChatComponent } from './delivery-chat/delivery-chat.component';
 
 
 
@@ -23,7 +24,8 @@ import { SuggestionsPageComponent } from './suggestions-page/suggestions-page.co
     JobDetailsComponent,
     PorposalComponent,
     DataProfileComponent,
-    SuggestionsPageComponent
+    SuggestionsPageComponent,
+    DeliveryChatComponent
   ],
   imports: [
     CommonModule,

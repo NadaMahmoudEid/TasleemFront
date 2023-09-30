@@ -20,26 +20,12 @@ export class ChatComponent {
     public _route: Router,
     private ChatService: ChatService,
     private LoginServive: LoginService) {
-    this.chatService.receiveMessage().subscribe(message => {
-      this.messages.push(message); // Add received message to the array
-    });
+  
   }
   ChatForm = this.formBuilder.group({
-    Msg: ['', []],
+    Msg: [''],
   });
 
-  send() {
-    const req = {
-      clientMsg: this.ChatForm.get('Msg')?.value,
-      clientId: this.LoginServive.getUserId(),
-      deliveryId: 'fa5a73bb-ebe7-4072-9f99-8f854532dd27'
-    }
-    console.log(req)
-    this.ChatService.callApi(req).subscribe((res) => {
-      console.log(res)
-    })
-
-
-  }
+ 
 
 }

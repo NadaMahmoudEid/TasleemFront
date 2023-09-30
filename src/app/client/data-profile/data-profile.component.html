@@ -1,224 +1,224 @@
 <section style="margin: 50px" dir="rtl">
-    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-      <div class="container">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-12 col-md-11 col-lg-7 col-xl-8">
-            <div class="card" style="border-radius: 15px">
-              <div class="card-body p-5">
-                <h1
-                  class="text text-center mb-5"
-                  style="font-family: 'Nanum Myeongjo', serif"
-                >
-                  تفاصيل الملف الشخصي
-                </h1>
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-11 col-lg-7 col-xl-8">
+          <div class="card" style="border-radius: 15px">
+            <div class="card-body p-5">
+              <h1
+                class="text text-center mb-5"
+                style="font-family: 'Nanum Myeongjo', serif"
+              >
+                تفاصيل الملف الشخصي
+              </h1>
 
-                <form
-                  [formGroup]="DataProfileForm"
-                  (ngSubmit)="submitData(DataProfileForm)"
-                >
-                  <div class="row mb-4">
-                    <div class="col">
-                      <div class="form-outline">
-                        <label class="form-label" for="form6Example1"
-                          >الاسم بالكامل</label
-                        >
-                        <input
-                          type="text"
-                          id="form6Example1"
-                          formControlName="FullName"
-                          class="form-control"
-                          (ngModelChange)="onInputChange('FullName', $event)"
-                        />
-                      </div>
-
-                      <div *ngIf="FullName?.errors != null && FullName?.touched">
-                        <p *ngIf="FullName?.errors?.['required']" class="text-danger">
-                          يجب ادخال الأسم كامل
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Message input -->
-                  <div>
-                    <div class="form-outline mb-4">
-                      <label class="form-label" for="form6Example7"
-                        >نبده عنى</label
+              <form
+                [formGroup]="DataProfileForm"
+                (ngSubmit)="submitData(DataProfileForm)"
+              >
+                <div class="row mb-4">
+                  <div class="col">
+                    <div class="form-outline">
+                      <label class="form-label" for="form6Example1"
+                        >الاسم بالكامل</label
                       >
-                      <textarea
+                      <input
+                        type="text"
+                        id="form6Example1"
+                        formControlName="FullName"
                         class="form-control"
-                        formControlName="OverView"
-                        id="form6Example7"
-                        rows="4"
-                        (ngModelChange)="onInputChange('OverView', $event)"
-                      ></textarea>
+                        (ngModelChange)="onInputChange('FullName', $event)"
+                      />
                     </div>
-                    <div
-                      *ngIf="OverView?.errors != null && OverView?.touched"
-                    >
-                      <p
-                        *ngIf="OverView?.errors?.['required']"
-                        class="text-danger"
-                      >
-                      يجب ادخال نبذة بسيطة
+
+                    <div *ngIf="FullName?.errors != null && FullName?.touched">
+                      <p *ngIf="FullName?.errors?.['required']" class="text-danger">
+                        يجب ادخال الأسم كامل
                       </p>
                     </div>
                   </div>
+                </div>
 
+                <!-- Message input -->
+                <div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form6Example7"
+                      >نبده عنى</label
+                    >
+                    <textarea
+                      class="form-control"
+                      formControlName="OverView"
+                      id="form6Example7"
+                      rows="4"
+                      (ngModelChange)="onInputChange('OverView', $event)"
+                    ></textarea>
+                  </div>
+                  <div
+                    *ngIf="OverView?.errors != null && OverView?.touched"
+                  >
+                    <p
+                      *ngIf="OverView?.errors?.['required']"
+                      class="text-danger"
+                    >
+                    يجب ادخال نبذة بسيطة
+                    </p>
+                  </div>
+                </div>
+
+
+                <!-- Text input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form6Example4">العنوان</label>
+                  <input
+                    type="text"
+                    id="form6Example4"
+                    formControlName="Address"
+                    class="form-control"
+                    (ngModelChange)="onInputChange('Address', $event)"
+                  />
+
+                  <div *ngIf="Address?.errors != null && Address?.touched">
+                    <p
+                      *ngIf="Address?.errors?.['required']"
+                      class="text-danger"
+                    >
+                    يجب ادخال العنوان
+                    </p>
+                  </div>
+                </div>
 
                   <!-- Text input -->
                   <div class="form-outline mb-4">
-                    <label class="form-label" for="form6Example4">العنوان</label>
+                    <label class="form-label" for="form6Example4">رقم الجوال</label>
                     <input
                       type="text"
                       id="form6Example4"
-                      formControlName="Address"
+                      formControlName="PhoneNum"
                       class="form-control"
-                      (ngModelChange)="onInputChange('Address', $event)"
+                      (ngModelChange)="onInputChange('PhoneNum', $event)"
                     />
 
-                    <div *ngIf="Address?.errors != null && Address?.touched">
+                    <div *ngIf="PhoneNum?.errors != null && PhoneNum?.touched">
                       <p
-                        *ngIf="Address?.errors?.['required']"
+                        *ngIf="PhoneNum?.errors?.['required']"
                         class="text-danger"
                       >
-                      يجب ادخال العنوان
+                      يجب ادخال رقم الجوال
                       </p>
                     </div>
                   </div>
 
-                    <!-- Text input -->
-                    <div class="form-outline mb-4">
-                      <label class="form-label" for="form6Example4">رقم الجوال</label>
-                      <input
-                        type="text"
-                        id="form6Example4"
-                        formControlName="PhoneNum"
-                        class="form-control"
-                        (ngModelChange)="onInputChange('PhoneNum', $event)"
-                      />
 
-                      <div *ngIf="PhoneNum?.errors != null && PhoneNum?.touched">
-                        <p
-                          *ngIf="PhoneNum?.errors?.['required']"
-                          class="text-danger"
-                        >
-                        يجب ادخال رقم الجوال
-                        </p>
-                      </div>
-                    </div>
-
-
-                  <!-- languge  input -->
-                  <ng-container formArrayName="languge">
-                    <div style="display: flex; justify-content: space-between">
-                      <label class="form-label" style="margin-top: 20px"
-                        >اللغات</label
-                      >
-                      <div
-                        style="
-                          display: flex;
-                          justify-content: end;
-                          margin-top: 10px;
-                        "
-                      >
-                        <input
-                          type="button"
-                          (click)="addlan()"
-                          class="btn bt"
-                          style="
-                            width: 50px;
-                            height: 50px;
-                            border-radius: 50px;
-                            background-color: white;
-                            color: black;
-                            font-size: 20px;
-                            border: 3px solid black;
-                          "
-                          value="+"
-                        />
-                      </div>
-                    </div>
-                    <div
-                      class="form-outline mb-4"
-                      *ngFor="let item of languge; let i = index"
+                <!-- languge  input -->
+                <ng-container formArrayName="languge">
+                  <div style="display: flex; justify-content: space-between">
+                    <label class="form-label" style="margin-top: 20px"
+                      >اللغات</label
                     >
-                      <label class="form-label">اللغه {{ i + 1 }}</label>
-                      <input
-                        (ngModelChange)="onInputChange('Languges', $event)"
-                        class="form-control"
-                        [formControlName]="i"
-                        rows="4"
-                      />
-                    </div>
-                  </ng-container>
-
-                  <div class="mb-3">
-                    <label for="formFile" class="form-label">صورتك</label>
-                    <div class="input-group">
-                      <input
-                        formControlName="profileImage"
-                        type="file"
-                        class="form-control"
-                        id="formFile"
-                        name="ProfileImage"
-                        placeholder="تعديل الصورة"
-                        (ngModelChange)="onInputChange('ProfileImg', $event)"
-                        (change)="onSelectFile($event)"
-                      />
-                    </div>
-
                     <div
-                      *ngIf="
-                        profileImage?.errors != null && profileImage?.touched
+                      style="
+                        display: flex;
+                        justify-content: end;
+                        margin-top: 10px;
                       "
                     >
-                      <p
-                        class="text-danger"
-                        *ngIf="profileImage?.errors?.['required']"
-                      >
-                        أدخل صورتك.
-                      </p>
+                      <input
+                        type="button"
+                        (click)="addlan()"
+                        class="btn bt"
+                        style="
+                          width: 50px;
+                          height: 50px;
+                          border-radius: 50px;
+                          background-color: white;
+                          color: black;
+                          font-size: 20px;
+                          border: 3px solid black;
+                        "
+                        value="+"
+                      />
                     </div>
+                  </div>
+                  <div
+                    class="form-outline mb-4"
+                    *ngFor="let item of languge; let i = index"
+                  >
+                    <label class="form-label">اللغه {{ i + 1 }}</label>
+                    <input
+                      (ngModelChange)="onInputChange('Languges', $event)"
+                      class="form-control"
+                      [formControlName]="i"
+                      rows="4"
+                    />
+                  </div>
+                </ng-container>
+
+                <div class="mb-3">
+                  <label for="formFile" class="form-label">صورتك</label>
+                  <div class="input-group">
+                    <input
+                      formControlName="profileImage"
+                      type="file"
+                      class="form-control"
+                      id="formFile"
+                      name="ProfileImage"
+                      placeholder="تعديل الصورة"
+                      (ngModelChange)="onInputChange('ProfileImg', $event)"
+                      (change)="onSelectFile($event)"
+                    />
                   </div>
 
                   <div
-                    *ngIf="showError"
-                    class="alert alert-danger fade"
-                    style="color: rgb(102, 102, 102)"
-                    role="alert"
+                    *ngIf="
+                      profileImage?.errors != null && profileImage?.touched
+                    "
                   >
-                    يجب ادخال   لغه التحدث واحد علي الاقل !
-                    <button
-                      type="button"
-                      style="margin-right: 25%; border: none"
-                      (click)="hide()"
+                    <p
+                      class="text-danger"
+                      *ngIf="profileImage?.errors?.['required']"
                     >
-                      <span>&times;</span>
-                    </button>
+                      أدخل صورتك.
+                    </p>
                   </div>
-                  <div class="d-flex flex-wrap justify-content-center">
-                    <button
-                      type="submit"
-                      class="btn btn-block mb-4"
-                      style="
-                        width: 10em;
-                        height: auto;
-                        border-radius: 25px;
-                        background-color: #404c68;
-                        color: white;
-                        font-size: 16px;
-                      "
-                      [disabled]="DataProfileForm.invalid"
-                    >
-                      حفظ التعديلات
-                    </button>
-                  </div>
-                </form>
-              </div>
+                </div>
+
+                <div
+                  *ngIf="showError"
+                  class="alert alert-danger fade"
+                  style="color: rgb(102, 102, 102)"
+                  role="alert"
+                >
+                  يجب ادخال   لغه التحدث واحد علي الاقل !
+                  <button
+                    type="button"
+                    style="margin-right: 25%; border: none"
+                    (click)="hide()"
+                  >
+                    <span>&times;</span>
+                  </button>
+                </div>
+                <div class="d-flex flex-wrap justify-content-center">
+                  <button
+                    type="submit"
+                    class="btn btn-block mb-4"
+                    style="
+                      width: 10em;
+                      height: auto;
+                      border-radius: 25px;
+                      background-color: #404c68;
+                      color: white;
+                      font-size: 16px;
+                    "
+                    [disabled]="DataProfileForm.invalid"
+                  >
+                    حفظ التعديلات
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>

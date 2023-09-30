@@ -1,16 +1,12 @@
-<div class="row ">
+<div class="row " style="overflow: hidden;">
   
-    <div class="col-md-10 col-12" style="height: 85vh;">
-        <router-outlet>
-
-        </router-outlet>
-    </div>
-    <div class="sidebar col-md-2 col-12 ">
-        <header class="sidebar_header " style="text-align: center; ">
-            <button>
-                <span>
-                    <img src='data:image/png;base64,{{decodedImage}}'>
-                    <span class="d-md-flex d-sm-none">{{userName}}</span>
+  
+    <div class="sidebar col-md-2 col-12 " style="height: 83.vh;">
+        <header class="sidebar_header " style="text-align: center; overflow: hidden;">
+            <button class="m-auto">
+                <span class=" m-auto">
+                    <img class="" src='../../../assets/Logo (2).png'>
+                  
                 </span>
             </button>
         </header>
@@ -24,28 +20,28 @@
                     <i class="fa-solid fa-heart-pulse"></i>
                 </span>
             </button>
-            <button routerLink="Plans">
-                <span class="text-success">
+            <button routerLink="subadmin">
+                <span class="">
 
-                    <span class="d-md-flex">الخطط</span>
+                    <span class="d-md-flex">أضافة ادمن </span>
                     <i class="fa-solid fa-list-check"></i>
                 </span>
             </button>
 
 
 
-            <button routerLink="Patients">
-                <span class="text-info">
+            <button routerLink="report">
+                <span class="">
 
-                    <span class="d-md-flex ">المتابعة</span>
+                    <span class="d-md-flex ">الشكاوى</span>
                     <i class="fa-solid fa-people-arrows"></i>
                 </span>
             </button>
 
             <button routerLink="dash">
-                <span class="text-warning ">
+                <span class=" ">
 
-                    <span class="d-md-flex d-flex" (click)="resetBehavioursubs()">الاشتراكات <div>
+                    <span class="d-md-flex d-flex" (click)="resetBehavioursubs()">الطلبات  <div>
                             <sup>{{ behaviorSubjectforSubscribtionsnumber }}</sup>
                         </div></span>
                     <i class="fa-solid fa-bullhorn"></i>
@@ -53,7 +49,7 @@
             </button>
 
             <button routerLink="Note" (click)="resetBehaviourNotification()">
-                <span class="text-danger ">
+                <span class=" ">
 
                     <span class="d-md-flex d-flex ">التنبيهات <div><sup>{{ behaviorSubjectforCountNotifications }}</sup></div></span>
                     <i class="fa-solid fa-circle-exclamation"></i>
@@ -62,5 +58,9 @@
             </button>
         </nav>
     </div>
-   
+    <div class="col-md-10 col-12" style="height: 83.6vh;">
+        <router-outlet>
+
+        </router-outlet>
+    </div>
 </div>

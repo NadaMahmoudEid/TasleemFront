@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/auth/Services/login.service';
-import { DeliveryProfileDTO } from 'src/app/delivery/Interfaces/DeliveryProfileDTO';
-import { EducationLevelDTO } from 'src/app/delivery/Interfaces/export interface DeliveryProfileDTO ';
-import { DeliveryService } from 'src/app/delivery/Services/delivery.service';
 import { SharedService } from 'src/app/shared/service/shared.service';
 import { ClientService } from '../Services/client.service';
 
@@ -55,10 +52,10 @@ export class DataProfileComponent {
     return this.DataProfileForm.get('ProfileImage');
   }
 
-
   get languge(){
     return (<FormArray>this.DataProfileForm.get("languge")).controls;
   }
+
   addlan(){
     const control=new FormControl(null,[Validators.required]);
 
@@ -94,8 +91,6 @@ export class DataProfileComponent {
         console.log("enterCondtion")
 
 
-      this.changedInputs.push("Languages");
-
         console.log(DataProfileForm.value);
 
 
@@ -104,10 +99,8 @@ export class DataProfileComponent {
               formData.append('Id',this._loginService.getUserId());
               formData.append('FullName',this.DataProfileForm.get('FullName')?.value!) ;
               formData.append('Address', this.DataProfileForm.get('Address')?.value!);
-              formData.append('PhoneNum',this.DataProfileForm.get('PhoneNumber')?.value!);
-                formData.append('ProfileImg', this.selectedFile, this.selectedFile.name);
-
-
+              formData.append('PhoneNum',this.DataProfileForm.get('PhoneNum')?.value!);
+              formData.append('ProfileImg', this.selectedFile, this.selectedFile.name);
               formData.append('OverView', this.DataProfileForm.get('OverView')?.value!);
 
               for (const control of LangugeFormArray.controls) {
@@ -118,8 +111,8 @@ export class DataProfileComponent {
               for (let i = 0; i < this.changedInputs.length; i++) {
                 formData.append('properties', this.changedInputs[i]);
 
-
               }
+
               this._ClientService.AddClientProfile(formData).subscribe((resp)=>{
                 console.log("manar",resp)
                 if(resp.message=="Success"){

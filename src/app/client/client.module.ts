@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { DataProfileComponent } from './data-profile/data-profile.component';
+import { ClientChatComponent } from './client-chat/client-chat.component';
 
 
 
@@ -18,7 +19,8 @@ import { DataProfileComponent } from './data-profile/data-profile.component';
     JobPorposalsComponent,
     PorposalDetailsComponent,
     ProfileComponent,
-    DataProfileComponent
+    DataProfileComponent,
+    ClientChatComponent
   ],
   imports: [
     CommonModule,

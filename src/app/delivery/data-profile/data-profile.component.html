@@ -207,7 +207,7 @@
                     >
                       <input
                         type="button"
-                        (click)="addall()"
+                        (click)="addskill()"
                         class="btn bt"
                         style="
                           width: 50px;
@@ -232,7 +232,7 @@
                       class="form-control"
                       [formControlName]="i"
                       rows="4"
-                    /> 
+                    />
                   </div>
                 </ng-container>
                 <hr />
@@ -287,11 +287,11 @@
                       formControlName="ProfileImage"
                       type="file"
                       class="form-control"
-                      id="profileImage"
+                      id="formFile"
                       name="ProfileImage"
                       placeholder="تعديل الصورة"
                       (ngModelChange)="onInputChange('ProfileImg', $event)"
-                      (change)="changeImg($event)"
+                      (change)="onSelectFile($event)"
                     />
                   </div>
 

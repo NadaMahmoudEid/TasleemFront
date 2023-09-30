@@ -18,4 +18,11 @@ export class AdminService {
   rejectjob(ClientID:string,JobID:number):Observable<any>{
     return this._Httpclient.put(`${this.url}/api/Jobs/RejectJob/${ClientID}/${JobID}`,{})
   }
+
+
+  getAllSuggestions(): Observable<any> {
+    return this._Httpclient.get<any>(
+    `${this.url}/api/ComplaintsAndSuggestions/AddComplaintsAndSuggestions`,{}
+    );
+      }
 }

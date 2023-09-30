@@ -1,4 +1,4 @@
-<div class="container"  >
+<div class="container">
   <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="col-12 col-md-12 col-lg-7 col-xl-9">
       <div class="card" style="border-radius: 0.9375em">
@@ -6,23 +6,28 @@
           <h1 class="text text-center mb-5" style="font-family: 'Nanum Myeongjo', serif; font-size: 2.125em">
             انضم كعميل أو دليفري
           </h1>
-          <h1 class="text text-center mb-5 "  style="font-family: 'Nanum Myeongjo', serif; font-size: 1.125em ; color: red;" *ngIf="IsChecked">
+          <h1 class="text text-center mb-5 "
+            style="font-family: 'Nanum Myeongjo', serif; font-size: 1.125em ; color: red;" *ngIf="IsChecked">
             يجب اختيار لتسجيل !
           </h1>
 
           <div>
-            <div class="row d-flex justify-content-center align-items-center h-100 mb-2" >
-              <div  class="col-md-5 col-12 mx-auto my-2 mr-5" style="border: 3px solid #404c68; border-radius: 0.625em">
-                <div  style="
+            <div class="row d-flex justify-content-center align-items-center h-100 mb-2">
+              <div class="col-md-5 col-12 mx-auto my-2 mr-5 cho" (click)="onOptionSelected('كدليفري')">
+                <div style="
                     display: flex;
                     justify-content: space-between;
                     padding: 0.625em;
+                    
                   ">
+                          <div class="col-7">
 
-                  <div>
-                    <input type="radio" name="userType" value="كدليفري" (click)="onOptionSelected('كدليفري')" [checked]="selectedOption === 'كدليفري'">
-                    <label for="كدليفري">كدليفري</label>
-                  </div>
+                            <input class="" type="radio" name="userType" value="كدليفري" (click)="onOptionSelected('كدليفري')"
+                              [checked]="selectedOption === 'كدليفري'">
+                            <label class="" for="كدليفري">كدليفري</label>
+                         </div>
+          
+          
                 </div>
                 <div id="btn" style="
                     padding: 1.25em;
@@ -34,17 +39,20 @@
                   أنا دليفري وأبحث عن عمل
                 </div>
               </div>
-              <div id="btn" class="col-md-5 col-12" style="border: 3px solid #404c68; border-radius: 0.625em">
+              <div id="btn" class="col-md-5 col-12 cho" (click)="onOptionSelected('كعميل')">
                 <div style="
                     display: flex;
                     justify-content: space-between;
                     padding: 0.625em;
                   ">
 
-                  <div>
-                    <input type="radio" name="userType" value="كعميل" (click)="onOptionSelected('كعميل')" [checked]="selectedOption === 'كعميل'">
+                  <div class="col-7">
+                    <input type="radio" name="userType" value="كعميل" (click)="onOptionSelected('كعميل')"
+                      [checked]="selectedOption === 'كعميل'">
                     <label for="كعميل">كعميل</label>
+                   
                   </div>
+              
                 </div>
                 <div style="
                     font-size: 1.1875em;
@@ -64,8 +72,8 @@
                 background-color: #404c68;
                 color: white;
               " (click)="onNavigate()">
-             اشترك معنا
-             <span *ngIf="selectedOption"> {{selectedOption}}</span>
+                اشترك معنا
+                <span *ngIf="selectedOption"> {{selectedOption}}</span>
               </button>
             </div>
 

@@ -7,6 +7,7 @@ import { MyProjectComponent } from './my-project/my-project.component';
 import { PorposalDetailsComponent } from './porposal-details/porposal-details.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DataProfileComponent } from './data-profile/data-profile.component';
+import { ClientChatComponent } from './client-chat/client-chat.component';
 
 const routes: Routes = [
 {path:'addjob',component:AddjobComponent},
@@ -15,6 +16,8 @@ const routes: Routes = [
 {path:'profile',component:ProfileComponent},
 {path:'dataProfile',component:DataProfileComponent},
 {path:'porpDetails/:id',component:PorposalDetailsComponent},
+{path:'Clichat',component:ClientChatComponent},
+
 ]
 
 @NgModule({

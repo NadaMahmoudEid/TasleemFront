@@ -10,6 +10,7 @@ import { FilterComponent } from './filter/filter.component';
 import { DataProfileComponent } from './data-profile/data-profile.component';
 import { JobDetailsComponent } from './job-details/job-details.component';
 import { SuggestionsPageComponent } from './suggestions-page/suggestions-page.component';
+import { DeliveryChatComponent } from './delivery-chat/delivery-chat.component';
 
 const routes: Routes = [
 {path:'savedjobs',component:SavedJobComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
 {path:'ProfileData',component:DataProfileComponent},
 {path:'filter',component:FilterComponent},
 {path:'suggestions',component:SuggestionsPageComponent},
+{path:'DelChat',component:DeliveryChatComponent},
 ]
 
 @NgModule({

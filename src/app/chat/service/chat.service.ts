@@ -1,39 +1,37 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, OnInit } from '@angular/core';
+import * as signalR from '@microsoft/signalr';
 
-import {  HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
-import { Observable, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ChatService {
-  private hubConnection!: HubConnection;
-  private messageReceived = new Subject<string>();
-  constructor(private http: HttpClient) {
-    this.hubConnection = new HubConnectionBuilder()
-      .withUrl('https://localhost:7132/chatHub') // Use the SignalR hub URL you defined in your server
+export class ChatService  {
+  public hubConnection!: signalR.HubConnection;
+  constructor() {
+    this.StartConnection()
+
+
+  }
+
+  public StartConnection(): void {
+    this.hubConnection = new signalR.HubConnectionBuilder()
+      .withUrl('https://localhost:7132/chat', {
+      })
       .build();
 
-    this.hubConnection.start().catch(err => console.error(err));
-
-    // Register a client-side method to handle incoming messages
-    this.hubConnection.on('ReceiveMessage', (message: string) => {
-      this.messageReceived.next(message);
-    });
-  }
-
-  sendMessage(message: string) {
-    this.hubConnection.invoke('SendMessage', message).catch(err => console.error(err));
-  }
-
-  callApi(data:object):Observable<any>
-  {
-   return this.http.post('https://localhost:7132/api/Chat/SendMessageFromClient',data)
+    this.hubConnection
+      .start()
+      .then(() => {
+        console.log('Connection started');
+      })
+      .catch((error) => {
+        console.error('Error while starting SignalR connection:', error);
+      });
   }
 
 
-  // Subscribe to incoming messages
-  receiveMessage() {
-    return this.messageReceived.asObservable();
-  }
+
+
+
+
+
 }
