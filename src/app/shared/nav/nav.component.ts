@@ -14,21 +14,28 @@ export class NavComponent implements OnInit {
   isClient = false;
   isDelivery = false;
   isAdmin = false;
+  isSuperAdmin :any
 
   constructor(private _LoginService: LoginService, private _Router: Router) {}
 
   ngOnInit(): void {
     this._LoginService.userData.subscribe((userData) => {
+      
+
       if (userData !== null) {
         this.isLoggedIn = true;
         this.isClient = this._LoginService.getUserRole() === 'Client';
         this.isDelivery = this._LoginService.getUserRole() === 'Delivery';
         this.isAdmin = this._LoginService.getUserRole() === 'Admin';
+        console.log(this.isAdmin);
+        
+       this. isSuperAdmin=this._LoginService.getUserRole()==='SubAdmin';
       } else {
         this.isLoggedIn = false;
         this.isClient = false;
         this.isDelivery = false;
         this.isAdmin = false;
+        this.isSuperAdmin=false;
       }
     });
   }

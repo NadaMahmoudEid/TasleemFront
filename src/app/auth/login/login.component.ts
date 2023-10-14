@@ -56,7 +56,7 @@ export class LoginComponent {
 
              }
                  else if(this.loginUserRole=='Admin'||this.loginUserRole=='SubAdmin' ){
-                 this._route.navigate(['/admin/main'])
+                 this._route.navigate(['/admin/main/wellcome'])
                  }
                   else{
                  this._route.navigate(['home'])

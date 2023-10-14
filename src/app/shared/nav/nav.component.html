@@ -13,11 +13,11 @@
                <ul class="nav navbar-nav  " >
 
                 <li class="nav-item">
-                  <a class="nav-link" *ngIf="isLoggedIn"   routerLink="/about/aboutus" routerLinkActive="active">من نحن</a>
+                  <a class="nav-link" *ngIf="isLoggedIn && (isDelivery||isClient)"   routerLink="/about/aboutus" routerLinkActive="active">من نحن</a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" *ngIf="isLoggedIn"  routerLink="/about/ourserv" routerLinkActive="active">خدماتنا</a>
+                  <a class="nav-link" *ngIf="isLoggedIn  && (isDelivery||isClient)"  routerLink="/about/ourserv" routerLinkActive="active">خدماتنا</a>
                 </li>
 
 
@@ -36,7 +36,7 @@
                   <a class="nav-link" *ngIf="isLoggedIn  && isDelivery"  routerLink="/delivery/profile" routerLinkActive="active">الحساب</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" *ngIf="isLoggedIn "  routerLink="/delivery/suggestions" routerLinkActive="active">المقترحات والشكاوى</a>
+                  <a class="nav-link" *ngIf="isLoggedIn  && (isDelivery||isClient) "  routerLink="/delivery/suggestions" routerLinkActive="active">المقترحات والشكاوى</a>
                 </li>
 
                 <li class="nav-item">
